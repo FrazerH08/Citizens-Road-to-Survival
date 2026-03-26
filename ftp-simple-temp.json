@@ -1,0 +1,13 @@
+[
+	{
+		"name": "ERC student server",
+		"host": "ftp.ercstudentwebserver.co.uk",
+		"port": 21,
+		"type": "ftp",
+		"username": "frazerh@ercstudentwebserver.co.uk",
+		"password": "#",
+		"path": "/home",
+		"autosave": true,
+		"confirm": true
+	}
+]
