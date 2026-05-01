@@ -1,3 +1,8 @@
 body {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: weight;
+    font-style: normal;
     background-color: #060612;
+    color: #D2D2D2
 }
