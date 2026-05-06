@@ -11,7 +11,7 @@
 </head>
 <body>
      <h2 class="title"><u>Create Your account</u></h2>
-<form action="accountvalidation.php" method='POST'>
+<form action="account_validation.php" method='POST'>
         <p> if you want to survive </p>
 
         <label for="firstname"><b>First name:</b></label>
@@ -27,10 +27,6 @@
         <input type="text" class="box" placeholder="Enter Email" name="email" required> <br><br>
         <label for="dob"><b>Date of birth:</b></label>
         <input type="date" class="box" id="birthdate"name="birthdate"> <br>
-        <br>
-        <br>
-        <label for="email"><b>Email:</b></label>
-        <input type="text" class="box" placeholder="Enter Email" name="email" required> <br>
         <br> <label for="password"><b>Password:</b></label>
         <input type="password" class="box" placeholder="Enter Password" name="password" required>
 
