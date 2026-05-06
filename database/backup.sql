@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 30, 2026 at 11:32 PM
+-- Generation Time: May 01, 2026 at 12:14 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -81,54 +81,6 @@ INSERT INTO `feedback` (`id`, `firstname`, `lastname`, `username`, `email`, `sub
 -- --------------------------------------------------------
 
 --
--- Table structure for table `guides`
---
-
-CREATE TABLE `guides` (
-  `id` int(11) NOT NULL,
-  `title` text NOT NULL,
-  `description` text NOT NULL,
-  `picture` blob NOT NULL,
-  `content` text NOT NULL,
-  `username` text NOT NULL,
-  `time_created` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `comments` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `guides`
---
-
-INSERT INTO `guides` (`id`, `title`, `description`, `picture`, `content`, `username`, `time_created`, `comments`) VALUES
-(1, 'How to sell a player', 'Selling players is key for FM success!', 0x75706c6f6164732f53637265656e73686f7420323032362d30322d3134203233323733392e706e67, 'You sell players by pressing the accept transfer button. ', '', '2026-02-14 23:27:55', ''),
-(2, 'Wonderkids update is unreal', 'SHOCKING NEW UPDATE CHANGES EVERYTHING', 0x75706c6f6164732f53637265656e73686f7420323032362d30322d3134203233323434312e706e67, 'WONDERKIDS ARE EVERYWHERE ', '', '2026-02-14 23:26:03', '');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `guides_comments`
---
-
-CREATE TABLE `guides_comments` (
-  `id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `guides_id` int(11) NOT NULL,
-  `text` text NOT NULL,
-  `date_created` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `guides_comments`
---
-
-INSERT INTO `guides_comments` (`id`, `user_id`, `guides_id`, `text`, `date_created`) VALUES
-(1, 12, 2, 'De Rebot Le Paeri is the best wonderkid in the game no joke.', '2026-02-09 14:32:17'),
-(2, 14, 1, 'I avoid selling players', '2026-02-16 16:59:25'),
-(3, 14, 2, 'Rasmus is the best player in the game', '2026-02-16 17:00:01');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `issues`
 --
 
@@ -181,30 +133,53 @@ CREATE TABLE `local_thread_replies` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `news_comments`
+-- Table structure for table `questions`
 --
 
-CREATE TABLE `news_comments` (
-  `id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `news_id` int(11) NOT NULL,
-  `text` text NOT NULL,
-  `date_created` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+CREATE TABLE `questions` (
+  `questions_id` int(11) NOT NULL,
+  `question` int(11) NOT NULL,
+  `option1` text NOT NULL,
+  `option2` text NOT NULL,
+  `option3` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+-- --------------------------------------------------------
+
 --
--- Dumping data for table `news_comments`
+-- Table structure for table `quizzes`
 --
 
-INSERT INTO `news_comments` (`id`, `user_id`, `news_id`, `text`, `date_created`) VALUES
-(1, 1, 17, 'I think Euan is great ', '2025-05-22 20:34:15'),
-(3, 8, 1, 'Hume willl stay ', '2025-05-23 12:15:34'),
-(4, 9, 1, 'I LIKE THE THE TEAM!!!!', '2025-06-02 13:05:44'),
-(5, 3, 27, 'Euan thinks he is shocking\r\n\r\n\r\n', '2025-06-03 13:48:23'),
-(6, 3, 31, 'I Think hes really bad. My mate dave , top bloke from Alty , we go way back. He laughed his head of when he heard he was going to football league i shouted for god sake knowing we are signing another cheap player!!!\r\n', '2025-06-10 12:18:00'),
-(7, 12, 32, 'This website is poor ', '2026-02-09 14:16:15'),
-(8, 14, 33, 'i think FM is poor this year', '2026-02-16 16:58:52'),
-(9, 1, 36, 'Hello', '2026-02-16 17:03:42');
+CREATE TABLE `quizzes` (
+  `quizzes_id` int(11) NOT NULL,
+  `title` text NOT NULL,
+  `description` text NOT NULL,
+  `time_created` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `quiz_questions`
+--
+
+CREATE TABLE `quiz_questions` (
+  `id` int(11) NOT NULL,
+  `quizzes_id` int(11) NOT NULL,
+  `question_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `responses`
+--
+
+CREATE TABLE `responses` (
+  `responses_id` int(11) NOT NULL,
+  `answer_selected` text NOT NULL,
+  `is_correct` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -274,6 +249,21 @@ INSERT INTO `users` (`id`, `username`, `password`, `firstname`, `lastname`, `ema
 (12, 'haroldluvschads', '$2y$10$pkBIgqs9JoEHMEk3p5kPFOlUFoykeVxdCmQIe3W4lNWW4rS9E994O', 'Harold', 'barker', 'harold123@parry.com', '2007-08-13', 'user', 0, '', 'East Riding', 0),
 (14, 'Freddy098', '$2y$10$qsEbUlqCUI.MoblCVW9gd.s90ahDdXZxhx0ShpvgJ//lQimulphSK', 'Fred', 'Karen', 'fredkaren@gmail.com', '2015-05-12', 'user', 0, '', 'East Riding', 0);
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_responses`
+--
+
+CREATE TABLE `user_responses` (
+  `user_response_id` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
+  `quizzes_id` int(11) NOT NULL,
+  `question_id` int(11) NOT NULL,
+  `response_id` int(11) NOT NULL,
+  `time_completed` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 --
 -- Indexes for dumped tables
 --
@@ -288,18 +278,6 @@ ALTER TABLE `articles`
 -- Indexes for table `feedback`
 --
 ALTER TABLE `feedback`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `guides`
---
-ALTER TABLE `guides`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `guides_comments`
---
-ALTER TABLE `guides_comments`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -321,10 +299,28 @@ ALTER TABLE `local_thread_replies`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `news_comments`
+-- Indexes for table `questions`
 --
-ALTER TABLE `news_comments`
+ALTER TABLE `questions`
+  ADD PRIMARY KEY (`questions_id`);
+
+--
+-- Indexes for table `quizzes`
+--
+ALTER TABLE `quizzes`
+  ADD PRIMARY KEY (`quizzes_id`);
+
+--
+-- Indexes for table `quiz_questions`
+--
+ALTER TABLE `quiz_questions`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `responses`
+--
+ALTER TABLE `responses`
+  ADD PRIMARY KEY (`responses_id`);
 
 --
 -- Indexes for table `threads`
@@ -345,6 +341,14 @@ ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `user_responses`
+--
+ALTER TABLE `user_responses`
+  ADD PRIMARY KEY (`user_response_id`),
+  ADD KEY `id` (`id`),
+  ADD KEY `quizzes_id` (`quizzes_id`,`question_id`,`response_id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -359,18 +363,6 @@ ALTER TABLE `articles`
 --
 ALTER TABLE `feedback`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-
---
--- AUTO_INCREMENT for table `guides`
---
-ALTER TABLE `guides`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT for table `guides_comments`
---
-ALTER TABLE `guides_comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `issues`
@@ -391,10 +383,28 @@ ALTER TABLE `local_thread_replies`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `news_comments`
+-- AUTO_INCREMENT for table `questions`
 --
-ALTER TABLE `news_comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+ALTER TABLE `questions`
+  MODIFY `questions_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `quizzes`
+--
+ALTER TABLE `quizzes`
+  MODIFY `quizzes_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `quiz_questions`
+--
+ALTER TABLE `quiz_questions`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `responses`
+--
+ALTER TABLE `responses`
+  MODIFY `responses_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `threads`
@@ -407,6 +417,22 @@ ALTER TABLE `threads`
 --
 ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
+-- AUTO_INCREMENT for table `user_responses`
+--
+ALTER TABLE `user_responses`
+  MODIFY `user_response_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `user_responses`
+--
+ALTER TABLE `user_responses`
+  ADD CONSTRAINT `user_responses_ibfk_1` FOREIGN KEY (`id`) REFERENCES `users` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
