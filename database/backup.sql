@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 01, 2026 at 12:14 PM
+-- Generation Time: May 06, 2026 at 11:20 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `citizens'_road_to_surival`
+-- Database: `citizens_road_to_survival`
 --
 
 -- --------------------------------------------------------
@@ -226,7 +226,7 @@ CREATE TABLE `users` (
   `birthdate` text NOT NULL,
   `role` enum('user','admin','owner','') NOT NULL,
   `score` int(11) NOT NULL,
-  `supplies_status` enum('Very High','High','Meduim','Low','Very Low') NOT NULL,
+  `supplies_status` enum('Very High','High','Medium','Low','Very Low') NOT NULL DEFAULT 'Medium',
   `shelter_location` enum('East Riding','Birmingham','','') NOT NULL,
   `weekly_reported_issues` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -247,7 +247,9 @@ INSERT INTO `users` (`id`, `username`, `password`, `firstname`, `lastname`, `ema
 (10, 'ITKNEWS', '$2y$10$bNVzP3rShm/7lx30jHTjgunHDntXFlk6MTVq9K0jcHl13ZsGnXlKq', 'Mr', 'Reliable', 'reliablenews@yahoo.com', '1878-02-03', 'user', 0, '', 'East Riding', 0),
 (11, 'TheBatter', '$2y$10$Z1R2FPx.nZ8YqOxVCHcPseUR9cB7BiAAQXGQYNnuHLTdlWsPaXtyK', 'Greg', 'Richard', 'greg@fishandchips.co.uk', '1998-09-16', 'user', 0, '', 'East Riding', 0),
 (12, 'haroldluvschads', '$2y$10$pkBIgqs9JoEHMEk3p5kPFOlUFoykeVxdCmQIe3W4lNWW4rS9E994O', 'Harold', 'barker', 'harold123@parry.com', '2007-08-13', 'user', 0, '', 'East Riding', 0),
-(14, 'Freddy098', '$2y$10$qsEbUlqCUI.MoblCVW9gd.s90ahDdXZxhx0ShpvgJ//lQimulphSK', 'Fred', 'Karen', 'fredkaren@gmail.com', '2015-05-12', 'user', 0, '', 'East Riding', 0);
+(14, 'Freddy098', '$2y$10$qsEbUlqCUI.MoblCVW9gd.s90ahDdXZxhx0ShpvgJ//lQimulphSK', 'Fred', 'Karen', 'fredkaren@gmail.com', '2015-05-12', 'user', 0, '', 'East Riding', 0),
+(15, 'garyluvschads', '$2y$10$61aRUfPLu1IzhSRkIuOm9.Poi/QPGh9sGv4qyC9wFQTQq.mC8Y4IG', 'Gary', 'Barlow', 'garryid@hotmail.com', '2013-02-14', 'user', 50, 'Very High', 'East Riding', 0),
+(16, 'BARRY009', '$2y$10$oopIoe7zuImlKdkkbk0RI.tffYnM8FBo0bNK9LvKdEQI.acCtLbyS', 'Gary', 'Barry', 'Barry@hotmail.com', '2013-02-14', 'user', 50, 'Medium', 'East Riding', 0);
 
 -- --------------------------------------------------------
 
@@ -416,7 +418,7 @@ ALTER TABLE `threads`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `user_responses`
