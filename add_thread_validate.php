@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Thread Validate</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cambo&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+<?php
+include 'connectdb.php';
+session_start();
+//put a foreach loop to find out the keys in $_POST / $_FILES
+// foreach ($_FILES as $key => $value){
+//     echo($key . ' this is adams debug test');
+//   }
+
+$title = $_POST['title'];
+$description =$_POST['description'];
+$content = $_POST['content'];
+$username = $_SESSION['username'];
+
+$sanitisedTitle = htmlentities(string: $title);
+$sanitisedDescription = htmlentities(string: $description);
+$sanitisedPost = htmlentities(string: $content);
+
+$sql ="INSERT INTO threads (title, description, content, username) VALUES ('$sanitisedTitle', '$sanitisedDescription', '$sanitisedPost', '$username')";
+?>
+
+    <?php
+    if ($conn->query(query: $sql) === TRUE) {
+        echo "<h1 class='title' >Thread created</h1>";
+        echo "<a href='threads.php' style='display:block; text-align:center; class=btn'>Back to  threads </a>";
+    } else{
+        echo "Error: " . $sql ."<br>" . $conn->error;
+    }
+    ?>
+</body>
+</html>
