@@ -16,7 +16,12 @@
 include 'connectdb.php';
 session_start();
 $thread_id = $_GET['id'];
+$score= $_SESSION['score'];
 
+if($score < 20){
+    header(header:"Location: index.html");
+}
+    
 $sql = "SELECT title, description, content, username FROM threads WHERE id = ?";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("i", $thread_id);

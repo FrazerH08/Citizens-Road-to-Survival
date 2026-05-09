@@ -3,6 +3,12 @@ session_start();
 include 'connectdb.php';
 $logged_in = $_SESSION['logged_in'] ?? false;
 $role = $_SESSION['role'] ?? '';
+$score = $_SESSION['score'];
+
+if($score < 20){
+    header(header:"Location: index.html");
+}
+         
 
 // Search functionality
 $threads = [];

@@ -50,7 +50,7 @@ if (empty($news)) {
 <p class="welcome-message"> This page contains Latest articles and updates to help your survival chances</p>
 <?php
 if($role === 'admin'){
-    echo '<a href="news_upload.php" class="btn">Create Article</a>'; 
+    echo '<a href="article_upload.php" class="btn">Create Article</a>'; 
 }
 ?>
 <br> <br>
@@ -71,7 +71,7 @@ if($role === 'admin'){
                   if (!empty($row['picture'])) {
                     echo '<img src="' . htmlspecialchars($row['picture']) . '" alt="Article image" class="listnews-article-image">';
                 }
-                echo '<p><a class=article-title href="retrieve_news.php?id=' . htmlspecialchars($row['id']) . '">' .  '<b>', htmlspecialchars($row['title']) . '</b>' , '</a></p>';
+                echo '<p><a class=article-title href="retrieve_articles.php?id=' . htmlspecialchars($row['id']) . '">' .  '<b>', htmlspecialchars($row['title']) . '</b>' , '</a></p>';
 
                 if($role === 'admin'){
                     echo '<p>
