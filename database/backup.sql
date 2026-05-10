@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 07, 2026 at 03:54 PM
+-- Generation Time: May 08, 2026 at 04:48 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -44,7 +44,8 @@ CREATE TABLE `articles` (
 
 INSERT INTO `articles` (`id`, `title`, `description`, `picture`, `content`, `username`, `time_created`, `comments`) VALUES
 (33, 'How FM26 is So Great', 'An Article on why Football Manager is so good ', 0x75706c6f6164732f464d32362e77656270, 'Football Manager continues to stay busy they&#039;re plenty of discussion across the community about updates, gameplay changes, and what fans want to see next. Recent patches have focused mainly on improving match realism,\r\n\r\nOne of the biggest talking points has been the match engine, with many players enjoying it because it is fresh and new , something different to previous editions.While it&rsquo;s not perfect, most fans agree that the game now feels more realistic.\r\n\r\nOne Negative is the fans are angry about the UI overall and miss the old FM24 style , its like marmite people either love or hate it. \r\n\r\nthe FM community remains as active as ever. From custom databases and face packs to tactical guides on YouTube, players are still finding new ways to keep the game fresh. \r\n\r\nOverall, Football Manager is in a solid place right now. While there are still improvements to be made, the ongoing updates and strong community support show why the series continues to be one of the most popular football simulation games out there.', '', '2026-02-10 20:43:07', ''),
-(36, 'Latest FM NEWS ', 'February', 0x75706c6f6164732f44616e6e792d526f73652e6a7067, 'That this a is a test ', '', '2026-02-16 17:03:07', '');
+(36, 'Latest FM NEWS ', 'February', 0x75706c6f6164732f44616e6e792d526f73652e6a7067, 'That this a is a test ', '', '2026-02-16 17:03:07', ''),
+(37, 'Test', 'This is a test ', 0x75706c6f6164732f53637265656e73686f7420323032362d30312d3330203130313430392e706e67, 'Hello this is dystopian ', 'FrazerGTFC', '2026-05-08 09:52:40', '');
 
 -- --------------------------------------------------------
 
@@ -193,8 +194,17 @@ CREATE TABLE `threads` (
   `description` text NOT NULL,
   `content` text NOT NULL,
   `username` text NOT NULL,
-  `time_created` datetime NOT NULL
+  `time_created` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `threads`
+--
+
+INSERT INTO `threads` (`id`, `title`, `description`, `content`, `username`, `time_created`) VALUES
+(1, 'supplies', 'fefdf', 'Where is my supplies ', 'FrazerGTFC', '0000-00-00 00:00:00'),
+(2, 'supplies 3 ', 'fefdf', 'Where is my supplies NOW', 'FrazerGTFC', '2026-05-08 13:24:13'),
+(3, 'Frazers love life ', 'He lives in a tiny mouldy flat above a shuttered betting shop.', 'He lives in a tiny mouldy flat above a shuttered betting shop, where the radiator only works if he kicks it hard enough and the wallpaper peels like dead skin. Every evening is the same: greasy takeaway burgers stacked beside his monitor, cola bottles on the floor, and twelve straight hours of Football Manager while rain leaks through the cracked window.\r\n\r\nHe keeps telling himself this save will change his life.\r\n\r\nIt never does.\r\n\r\nAt work nobody really talks to him unless they need something moved. He spends lunch breaks scrolling dating apps with zero matches except obvious bots. Every attempt at flirting dies instantly &mdash; awkward messages, unread replies, women slowly backing away after one conversation about his fourth-division Croatian wonderkid.\r\n\r\nHis friends stopped inviting him out years ago because he always says no to &ldquo;save money,&rdquo; then spends &pound;40 on burgers and in-game editor tools.\r\n\r\nSometimes at 2AM, after another lost playoff final, he stares at the glowing monitor and imagines what having a girlfriend would even feel like. Someone sitting beside him. Someone laughing. Someone asking how his day was.\r\n\r\nInstead, the only voice in the room is the commentator from Football Manager and the buzz of a dying fridge.\r\n\r\nBy age thirty-five, he knows every wonderkid in Europe but has never been in love. The delivery drivers know his name better than any woman ever has.\r\n\r\nThe saddest part is that he&rsquo;s stopped believing things could change.', 'FrazerGTFC', '2026-05-08 14:07:44');
 
 -- --------------------------------------------------------
 
@@ -203,12 +213,20 @@ CREATE TABLE `threads` (
 --
 
 CREATE TABLE `threads_replies` (
-  `id` int(11) NOT NULL DEFAULT 0,
+  `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `thread_id` int(11) NOT NULL,
   `text` text NOT NULL,
   `date_created` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `threads_replies`
+--
+
+INSERT INTO `threads_replies` (`id`, `user_id`, `thread_id`, `text`, `date_created`) VALUES
+(1, 12, 3, 'dont worry frazer!!!!i have a feeling on october the 17th that you will get a gf just dont let the dystopian corrupt government get to you aka the jews ', '2026-05-08 14:36:20'),
+(3, 12, 3, 'unlucky you melt ', '2026-05-08 14:47:46');
 
 -- --------------------------------------------------------
 
@@ -359,7 +377,7 @@ ALTER TABLE `user_responses`
 -- AUTO_INCREMENT for table `articles`
 --
 ALTER TABLE `articles`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT for table `feedback`
@@ -413,7 +431,13 @@ ALTER TABLE `responses`
 -- AUTO_INCREMENT for table `threads`
 --
 ALTER TABLE `threads`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `threads_replies`
+--
+ALTER TABLE `threads_replies`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `users`
