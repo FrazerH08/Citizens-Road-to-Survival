@@ -28,7 +28,7 @@ if($role!='admin' || $logged_in == false) {
     while ($row = $result->fetch_assoc()){
         $scores[]=$row;
     }
-'<div class="test-container">'
+'<div class=test-container>';
     // Display scores
     if (!empty($scores)) {
         foreach ($scores as $row) {
@@ -45,7 +45,7 @@ if($role!='admin' || $logged_in == false) {
     } else {
         echo "<p>No users found.</p>";
     }
-'</div>'
+'</div>';
     // echo '<h2> id: '  . htmlspecialchars($row['id']).'</h2>';
     // echo '<h2> Username: '  . htmlspecialchars($row['username']).'</h2>';
     // echo '<h2>Score: ' . htmlspecialchars($row['score']) . '</h2>';
