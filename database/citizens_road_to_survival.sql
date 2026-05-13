@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 12, 2026 at 12:29 AM
+-- Generation Time: May 14, 2026 at 01:25 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -247,30 +247,31 @@ CREATE TABLE `users` (
   `role` enum('user','admin','owner','') NOT NULL,
   `score` int(11) NOT NULL,
   `supplies_status` enum('Very High','High','Medium','Low','Very Low') NOT NULL DEFAULT 'Medium',
-  `shelter_location` enum('East Riding','Birmingham','','') NOT NULL,
-  `weekly_reported_issues` int(11) NOT NULL
+  `shelter_location` enum('Bedfordshire','Berkshire','Bristol','Buckinghamshire','Cambridgeshire','Cheshire','Cornwall','Cumbria','Derbyshire','Devon','Dorset','Durham','East Riding of Yorkshire','East Sussex','Essex','Gloucestershire','Greater London','Greater Manchester','Hampshire','Herefordshire','Hertfordshire','Isle of Wight','Kent','Lancashire','Leicestershire','Lincolnshire','Merseyside','Middlesex','Norfolk','North Yorkshire','Northamptonshire','Northumberland','Nottinghamshire','Oxfordshire','Rutland','Shropshire','Somerset','South Yorkshire','Staffordshire','Suffolk','Surrey','Tyne and Wear','Warwickshire','West Midlands','West Sussex','West Yorkshire','Wiltshire','Worcestershire') DEFAULT NULL,
+  `weekly_reported_issues` int(11) NOT NULL,
+  `last_supply_request` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `password`, `firstname`, `lastname`, `email`, `birthdate`, `role`, `score`, `supplies_status`, `shelter_location`, `weekly_reported_issues`) VALUES
-(1, 'FrazerGTFC', '$2y$10$EwvAmv/0GzWsB86V5ffUTecwJp3ehOCYM8nCSIJenXjPcBDaOHfMO', 'Frazer   ', 'Harness   ', 'frazergtfc9@outlook.com', '2008-06-07', 'admin', 50, 'Medium', 'East Riding', 0),
-(3, 'EuanParry123', '$2y$10$n3SxG/5GD1EkA0xw.KanxeMMBZBDL6aYifWk6X/IH1GGTDLWk9jdG', 'Euan      ', 'Pazza      ', 'euan@gmail.com', '2020-01-07', 'user', 65, '', 'East Riding', 0),
-(4, 'harold1234', '$2y$10$76PrL2sPvomrdLcM4ROCY.O4Hvp7pHd38QS/gTZlFJOn63q77fBNe', 'harry', 'barker', 'HAROLd123@gmail.com', '2007-08-13', 'user', 0, '', 'East Riding', 0),
-(5, 'thegreatone', '$2y$10$qs0Df8w2wAwTVdXJ8Ceg7ek/s8qM0Wjb5/hv62.pVzMq1wxeh.F1O', 'euan ', 'glyn', 'euanismydadd@yahoo.com', '12121-02-12', 'admin', 0, '', 'East Riding', 0),
-(6, 'Enrol123', '$2y$10$4kxZa1hwdH5QR3STzJUYRu5N1nMIOmBmjF7iyH.bcUFxHdEuFdqdK', 'Euan ', 'Parry ', 'Egrparry28@gmail.com', '2007-09-28', 'user', 18, 'Medium', 'East Riding', 0),
-(7, 'EuanSmells', '$2y$10$xzFzSyqM/cOxiOuSxMrHfeWtFr0MiNUFRARMMhWAOfAIX/gtJzMBW', 'Alex', 'Parry', 'alexparry@gmail.com', '2004-03-28', 'user', 0, '', 'East Riding', 0),
-(8, 'MrTest123', '$2y$10$gsruPByhpzqk48vrhwEd9.K7Ww3YiSbVe9cIyEIcLf2O6Ll1gJto2', 'Test ', 'Testing ', 'test@gmail.com', '2003-02-03', 'user', 0, '', 'East Riding', 0),
-(9, 'Euan123', '$2y$10$mUbp3WPvQsZkHFVzMiGgo.0066L0lJFvCfQoPzhEx9zO9g2jTDdDS', 'Euan ', 'Parry', 'Enrol123@gmail.com', '2007-09-28', 'user', 0, '', 'East Riding', 0),
-(10, 'ITKNEWS', '$2y$10$bNVzP3rShm/7lx30jHTjgunHDntXFlk6MTVq9K0jcHl13ZsGnXlKq', 'Mr', 'Reliable', 'reliablenews@yahoo.com', '1878-02-03', 'user', 0, '', 'East Riding', 0),
-(11, 'TheBatter', '$2y$10$Z1R2FPx.nZ8YqOxVCHcPseUR9cB7BiAAQXGQYNnuHLTdlWsPaXtyK', 'Greg', 'Richard', 'greg@fishandchips.co.uk', '1998-09-16', 'user', 0, '', 'East Riding', 0),
-(12, 'haroldluvschads', '$2y$10$pkBIgqs9JoEHMEk3p5kPFOlUFoykeVxdCmQIe3W4lNWW4rS9E994O', 'Harold', 'barker', 'harold123@parry.com', '2007-08-13', 'user', 67, 'Low', 'Birmingham', 0),
-(14, 'Freddy098', '$2y$10$qsEbUlqCUI.MoblCVW9gd.s90ahDdXZxhx0ShpvgJ//lQimulphSK', 'Fred', 'Karen', 'fredkaren@gmail.com', '2015-05-12', 'user', 0, '', 'East Riding', 0),
-(15, 'garyluvschads', '$2y$10$61aRUfPLu1IzhSRkIuOm9.Poi/QPGh9sGv4qyC9wFQTQq.mC8Y4IG', 'Gary', 'Barlow', 'garryid@hotmail.com', '2013-02-14', 'user', 50, 'Very High', 'East Riding', 0),
-(16, 'BARRY009', '$2y$10$oopIoe7zuImlKdkkbk0RI.tffYnM8FBo0bNK9LvKdEQI.acCtLbyS', 'Gary', 'Barry', 'Barry@hotmail.com', '2013-02-14', 'user', 50, 'Medium', 'East Riding', 0),
-(17, 'CHADDU', '$2y$10$9fJj2DR3xvXtcw4JKqj2MOe4hdkmHEU8IzOfNQDauhrgre9UoQWha', 'Chad', 'Chaddu', 'looksmaxorg@gmail.com', '2012-02-14', 'user', 50, 'Medium', 'East Riding', 0);
+INSERT INTO `users` (`id`, `username`, `password`, `firstname`, `lastname`, `email`, `birthdate`, `role`, `score`, `supplies_status`, `shelter_location`, `weekly_reported_issues`, `last_supply_request`) VALUES
+(1, 'FrazerGTFC', '$2y$10$EwvAmv/0GzWsB86V5ffUTecwJp3ehOCYM8nCSIJenXjPcBDaOHfMO', 'Frazer   ', 'Harness   ', 'frazergtfc9@outlook.com', '2008-06-07', 'admin', 50, 'Medium', '', 0, NULL),
+(3, 'EuanParry123', '$2y$10$n3SxG/5GD1EkA0xw.KanxeMMBZBDL6aYifWk6X/IH1GGTDLWk9jdG', 'Euan      ', 'Pazza      ', 'euan@gmail.com', '2020-01-07', 'user', 65, '', '', 0, NULL),
+(4, 'harold1234', '$2y$10$76PrL2sPvomrdLcM4ROCY.O4Hvp7pHd38QS/gTZlFJOn63q77fBNe', 'harry', 'barker', 'HAROLd123@gmail.com', '2007-08-13', 'user', 0, '', '', 0, NULL),
+(5, 'thegreatone', '$2y$10$qs0Df8w2wAwTVdXJ8Ceg7ek/s8qM0Wjb5/hv62.pVzMq1wxeh.F1O', 'euan ', 'glyn', 'euanismydadd@yahoo.com', '12121-02-12', 'admin', 0, '', '', 0, NULL),
+(6, 'Enrol123', '$2y$10$4kxZa1hwdH5QR3STzJUYRu5N1nMIOmBmjF7iyH.bcUFxHdEuFdqdK', 'Euan ', 'Parry ', 'Egrparry28@gmail.com', '2007-09-28', 'user', 18, 'High', '', 0, '2026-05-13 22:41:59'),
+(7, 'EuanSmells', '$2y$10$xzFzSyqM/cOxiOuSxMrHfeWtFr0MiNUFRARMMhWAOfAIX/gtJzMBW', 'Alex', 'Parry', 'alexparry@gmail.com', '2004-03-28', 'user', 0, '', '', 0, NULL),
+(8, 'MrTest123', '$2y$10$gsruPByhpzqk48vrhwEd9.K7Ww3YiSbVe9cIyEIcLf2O6Ll1gJto2', 'Test ', 'Testing ', 'test@gmail.com', '2003-02-03', 'user', 0, '', '', 0, NULL),
+(9, 'Euan123', '$2y$10$mUbp3WPvQsZkHFVzMiGgo.0066L0lJFvCfQoPzhEx9zO9g2jTDdDS', 'Euan ', 'Parry', 'Enrol123@gmail.com', '2007-09-28', 'user', 0, '', '', 0, NULL),
+(10, 'ITKNEWS', '$2y$10$bNVzP3rShm/7lx30jHTjgunHDntXFlk6MTVq9K0jcHl13ZsGnXlKq', 'Mr', 'Reliable', 'reliablenews@yahoo.com', '1878-02-03', 'user', 0, '', '', 0, NULL),
+(11, 'TheBatter', '$2y$10$Z1R2FPx.nZ8YqOxVCHcPseUR9cB7BiAAQXGQYNnuHLTdlWsPaXtyK', 'Greg', 'Richard', 'greg@fishandchips.co.uk', '1998-09-16', 'user', 0, '', '', 0, NULL),
+(12, 'haroldluvschads', '$2y$10$pkBIgqs9JoEHMEk3p5kPFOlUFoykeVxdCmQIe3W4lNWW4rS9E994O', 'Harold', 'barker', 'harold123@parry.com', '2007-08-13', 'user', 62, 'High', '', 0, NULL),
+(14, 'Freddy098', '$2y$10$qsEbUlqCUI.MoblCVW9gd.s90ahDdXZxhx0ShpvgJ//lQimulphSK', 'Fred', 'Karen', 'fredkaren@gmail.com', '2015-05-12', 'user', 0, '', '', 0, NULL),
+(15, 'garyluvschads', '$2y$10$61aRUfPLu1IzhSRkIuOm9.Poi/QPGh9sGv4qyC9wFQTQq.mC8Y4IG', 'Gary', 'Barlow', 'garryid@hotmail.com', '2013-02-14', 'user', 30, 'High', '', 0, NULL),
+(16, 'BARRY009', '$2y$10$oopIoe7zuImlKdkkbk0RI.tffYnM8FBo0bNK9LvKdEQI.acCtLbyS', 'Gary', 'Barry', 'Barry@hotmail.com', '2013-02-14', 'user', 50, 'Medium', '', 0, NULL),
+(17, 'CHADDU', '$2y$10$9fJj2DR3xvXtcw4JKqj2MOe4hdkmHEU8IzOfNQDauhrgre9UoQWha', 'Chad', 'Chaddu', 'looksmaxorg@gmail.com', '2012-02-14', 'user', 50, 'Medium', '', 0, NULL);
 
 -- --------------------------------------------------------
 

@@ -45,7 +45,7 @@
         // Add debugging
         // echo "Debug - Session username set: " . $_SESSION['username'];
 
-        header("Location: loginsuccess.php");
+        header("Location: dashboard.php");
         exit();
     } else {
         echo "<h1 class='title'>Invalid username or password</h1>";

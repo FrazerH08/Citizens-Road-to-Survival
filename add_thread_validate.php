@@ -13,11 +13,6 @@
 <?php
 include 'connectdb.php';
 session_start();
-//put a foreach loop to find out the keys in $_POST / $_FILES
-// foreach ($_FILES as $key => $value){
-//     echo($key . ' this is adams debug test');
-//   }
-
 $title = $_POST['title'];
 $description =$_POST['description'];
 $content = $_POST['content'];

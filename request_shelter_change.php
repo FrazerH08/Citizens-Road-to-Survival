@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="login.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cambo&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+<?php
+include 'connectdb.php';
+session_start();
+$id = $_SESSION['user_id'];
+$role=$_SESSION['role'];
+$logged_in = $_SESSION['logged_in'];
+
+if($logged_in == false) {
+    header(header:"Location: login.php");
+}
+
+ $stmt = $conn->prepare("SELECT id, shelter_location, score FROM users WHERE id = ?");
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row =$result->fetch_assoc();
+        $shelterlocation = $row['shelter_location'];
+        $score = $row['score'];
+
+echo "<h2> Your current shelter location is: <b> $shelterlocation </b> </h2>" ;
+echo "<p> If you are happy with your current location , return back to <a href= dashboard.php > Dashboard </a> </p> "
+?> 
+<form action="shelter_change_validation.php" method="post">
+    <select name="shelter_location" required>
+    <option value="" disabled selected>Select County</option>
+    <option value="Bedfordshire">Bedfordshire</option>
+    <option value="Berkshire">Berkshire</option>
+    <option value="Bristol">Bristol</option>
+    <option value="Buckinghamshire">Buckinghamshire</option>
+    <option value="Cambridgeshire">Cambridgeshire</option>
+    <option value="Cheshire">Cheshire</option>
+    <option value="Cornwall">Cornwall</option>
+    <option value="Cumbria">Cumbria</option>
+    <option value="Derbyshire">Derbyshire</option>
+    <option value="Devon">Devon</option>
+    <option value="Dorset">Dorset</option>
+    <option value="Durham">Durham</option>
+    <option value="East Riding of Yorkshire">East Riding of Yorkshire</option>
+    <option value="East Sussex">East Sussex</option>
+    <option value="Essex">Essex</option>
+    <option value="Gloucestershire">Gloucestershire</option>
+    <option value="Greater London">Greater London</option>
+    <option value="Greater Manchester">Greater Manchester</option>
+    <option value="Hampshire">Hampshire</option>
+    <option value="Herefordshire">Herefordshire</option>
+    <option value="Hertfordshire">Hertfordshire</option>
+    <option value="Isle of Wight">Isle of Wight</option>
+    <option value="Kent">Kent</option>
+    <option value="Lancashire">Lancashire</option>
+    <option value="Leicestershire">Leicestershire</option>
+    <option value="Lincolnshire">Lincolnshire</option>
+    <option value="Merseyside">Merseyside</option>
+    <option value="Middlesex">Middlesex</option>
+    <option value="Norfolk">Norfolk</option>
+    <option value="North Yorkshire">North Yorkshire</option>
+    <option value="Northamptonshire">Northamptonshire</option>
+    <option value="Northumberland">Northumberland</option>
+    <option value="Nottinghamshire">Nottinghamshire</option>
+    <option value="Oxfordshire">Oxfordshire</option>
+    <option value="Rutland">Rutland</option>
+    <option value="Shropshire">Shropshire</option>
+    <option value="Somerset">Somerset</option>
+    <option value="South Yorkshire">South Yorkshire</option>
+    <option value="Staffordshire">Staffordshire</option>
+    <option value="Suffolk">Suffolk</option>
+    <option value="Surrey">Surrey</option>
+    <option value="Tyne and Wear">Tyne and Wear</option>
+    <option value="Warwickshire">Warwickshire</option>
+    <option value="West Midlands">West Midlands</option>
+    <option value="West Sussex">West Sussex</option>
+    <option value="West Yorkshire">West Yorkshire</option>
+    <option value="Wiltshire">Wiltshire</option>
+    <option value="Worcestershire">Worcestershire</option>
+</select>
+<input type="submit" class="btn" onclick="alert('Thanks for submitting!')"></input>
+</form>
+</body>
+</html>
