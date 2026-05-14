@@ -20,6 +20,7 @@ $score = $_POST['score'];
 $stmt = $conn->prepare("SELECT score, weekly_reported_issues FROM users WHERE id = ?");
 $weekly_reported_issues = $stmt->fetch_assoc()['weekly_reported_issues'];
 
+$sql = "INSERT INTO reported_issues (user_id, title, content) VALUES ('$id', '$_POST[title]', '$_POST[content]')";
 if ($weekly_reported_issues > 1) {
     $score = $score - 15;
     $weekly_reported_issues = $weekly_reported_issues + 1;
@@ -28,7 +29,7 @@ if ($weekly_reported_issues > 1) {
     $weekly_reported_issues = $weekly_reported_issues + 1;
 }
 
-$sql ="UPDATE users SET score='$score', weekly_reported_issues='$weekly_reported_issues' WHERE id = $id";
+$sql2 ="UPDATE users SET score='$score', weekly_reported_issues='$weekly_reported_issues' WHERE id = $id";
 if ($conn->query(query: $sql) === TRUE) {
     echo "<h1>Thanks for letting us know.</h1>";
     echo "<p>We will look into the issue as soon as possible. But if this issue is false or unneeded your score will be reduced.</p>";
