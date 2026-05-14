@@ -33,8 +33,8 @@ if($logged_in == false) {
 echo "<h2> Your current shelter location is: <b> $shelterlocation </b> </h2>" ;
 echo "<p> If you are happy with your current location , return back to <a href= dashboard.php > Dashboard </a> </p> "
 ?> 
-<form action="shelter_change_validation.php" method="post">
-    <select name="shelter_location" required>
+<form action="shelter_change_validation.php" method="POST" enctype="multipart/form-data">
+<select name="shelter_location" required>
     <option value="" disabled selected>Select County</option>
     <option value="Bedfordshire">Bedfordshire</option>
     <option value="Berkshire">Berkshire</option>
@@ -85,7 +85,7 @@ echo "<p> If you are happy with your current location , return back to <a href= 
     <option value="Wiltshire">Wiltshire</option>
     <option value="Worcestershire">Worcestershire</option>
 </select>
-<input type="submit" class="btn" onclick="alert('Thanks for submitting!')"></input>
+<input type="submit" name="submit" class="btn" onclick="alert('Thanks for submitting!')">
 </form>
 </body>
 </html>
