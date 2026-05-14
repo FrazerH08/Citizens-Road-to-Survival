@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 14, 2026 at 03:45 PM
+-- Generation Time: May 14, 2026 at 11:19 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -77,7 +77,8 @@ INSERT INTO `feedback` (`id`, `firstname`, `lastname`, `username`, `email`, `sub
 (7, 'Frazee', 'Harbess', 'FrazerGTFC', 'test@gmail.com', 'This website is awful ', '2025-05-23 12:23:57'),
 (8, 'Greg', 'Richard', 'thegreatone', 'greg@fishandchips.co.uk', 'This website design is cool ', '2026-02-09 14:57:48'),
 (9, 'Greg', 'Richard', 'thegreatone', 'greg@fishandchips.co.uk', 'This website design is cool ', '2026-02-09 15:19:34'),
-(10, 'Greg', 'Richard', 'FrazerGTFC', 'greg@fishandchips.co.uk', 'Website is unreal', '2026-02-16 17:07:55');
+(10, 'Greg', 'Richard', 'FrazerGTFC', 'greg@fishandchips.co.uk', 'Website is unreal', '2026-02-16 17:07:55'),
+(11, 'Frazer', 'Harness', 'Enrol123', 'frazergtfc9@outlook.com', 'This website is crap', '2026-05-14 20:38:04');
 
 -- --------------------------------------------------------
 
@@ -90,8 +91,16 @@ CREATE TABLE `issues` (
   `title` text NOT NULL,
   `content` text NOT NULL,
   `username` text NOT NULL,
-  `time_created` datetime NOT NULL
+  `time_created` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `issues`
+--
+
+INSERT INTO `issues` (`id`, `title`, `content`, `username`, `time_created`) VALUES
+(1, 'THERE IS NO TIOLET ROLL', 'IVE HAD EENOUGH FIX THE CLIMATE AND GIVE ME MY TOILET ROLLS', 'haroldluvschads', '0000-00-00 00:00:00'),
+(2, 'THERE IS NO TIOLET ROLL P2 ', 'IVE HAD EENOUGH FIX THE CLIMATE AND GIVE ME MY TOILET ROLLS', 'haroldluvschads', '2026-05-14 18:16:09');
 
 -- --------------------------------------------------------
 
@@ -267,7 +276,7 @@ INSERT INTO `users` (`id`, `username`, `password`, `firstname`, `lastname`, `ema
 (9, 'Euan123', '$2y$10$mUbp3WPvQsZkHFVzMiGgo.0066L0lJFvCfQoPzhEx9zO9g2jTDdDS', 'Euan ', 'Parry', 'Enrol123@gmail.com', '2007-09-28', 'user', 0, '', '', 0, NULL),
 (10, 'ITKNEWS', '$2y$10$bNVzP3rShm/7lx30jHTjgunHDntXFlk6MTVq9K0jcHl13ZsGnXlKq', 'Mr', 'Reliable', 'reliablenews@yahoo.com', '1878-02-03', 'user', 0, '', '', 0, NULL),
 (11, 'TheBatter', '$2y$10$Z1R2FPx.nZ8YqOxVCHcPseUR9cB7BiAAQXGQYNnuHLTdlWsPaXtyK', 'Greg', 'Richard', 'greg@fishandchips.co.uk', '1998-09-16', 'user', 0, '', '', 0, NULL),
-(12, 'haroldluvschads', '$2y$10$pkBIgqs9JoEHMEk3p5kPFOlUFoykeVxdCmQIe3W4lNWW4rS9E994O', 'Harold', 'barker', 'harold123@parry.com', '2007-08-13', 'user', 57, 'High', 'Buckinghamshire', 0, NULL),
+(12, 'haroldluvschads', '$2y$10$pkBIgqs9JoEHMEk3p5kPFOlUFoykeVxdCmQIe3W4lNWW4rS9E994O', 'Harold', 'barker', 'harold123@parry.com', '2007-08-13', 'user', 62, 'High', 'Buckinghamshire', 1, NULL),
 (14, 'Freddy098', '$2y$10$qsEbUlqCUI.MoblCVW9gd.s90ahDdXZxhx0ShpvgJ//lQimulphSK', 'Fred', 'Karen', 'fredkaren@gmail.com', '2015-05-12', 'user', 0, '', '', 0, NULL),
 (15, 'garyluvschads', '$2y$10$61aRUfPLu1IzhSRkIuOm9.Poi/QPGh9sGv4qyC9wFQTQq.mC8Y4IG', 'Gary', 'Barlow', 'garryid@hotmail.com', '2013-02-14', 'user', 30, 'High', '', 0, NULL),
 (16, 'BARRY009', '$2y$10$oopIoe7zuImlKdkkbk0RI.tffYnM8FBo0bNK9LvKdEQI.acCtLbyS', 'Gary', 'Barry', 'Barry@hotmail.com', '2013-02-14', 'user', 50, 'Medium', '', 0, NULL),
@@ -386,13 +395,13 @@ ALTER TABLE `articles`
 -- AUTO_INCREMENT for table `feedback`
 --
 ALTER TABLE `feedback`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `issues`
 --
 ALTER TABLE `issues`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `local_threads`

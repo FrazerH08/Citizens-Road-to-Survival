@@ -53,7 +53,8 @@ if($role !='admin' ){
     echo '<h2><a href="review_score.php" >Review score  </a></h2>';
     echo '<h2><a href="article_upload.php" >Create article  </a></h2>';
     echo '<br>' .'<br>' .'<br>';
-    echo '<h2><a href="update_shelter_status.php" >Update shelter status </a></h2>';
+    echo '<h2><a href="request_shelter_change.php" >Change shelter location </a></h2>';
+    //echo '<h2><a href="update_shelter_status.php" >Update shelter status </a></h2>';
     echo '<h2><a href="threads.php" >Threads </a></h2>';
     echo '<h2><a href="thread_upload.php" >Create Thread </a></h2>';
     

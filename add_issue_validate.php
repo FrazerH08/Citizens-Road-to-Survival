@@ -14,13 +14,34 @@
 <?php
 include 'connectdb.php';
 session_start();
-$id = $_POST['id'];
-$score = $_POST['score'];
+$id = $_SESSION['user_id'];
+$score = $_SESSION['score'];
+$title = $_POST['title'];
+$content = $_POST['content'];
+$username = $_SESSION['username'];
+if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] == false) {
+    header(header:"Location: login.php");
+}
+
+if (empty($_POST['title']) || empty($_POST['content'])) {
+    echo "<h1>Title and content cannot be empty.</h1>";
+    echo "<a class=btn href='report_issue.php'>Back to report issue</a>";
+    exit();
+}
+
+
 
 $stmt = $conn->prepare("SELECT score, weekly_reported_issues FROM users WHERE id = ?");
-$weekly_reported_issues = $stmt->fetch_assoc()['weekly_reported_issues'];
+$stmt->bind_param("i", $id);
+$stmt->execute();
+$result = $stmt->get_result();
+$user = $result->fetch_assoc();
+$weekly_reported_issues = $user['weekly_reported_issues'];
+$score = $user['score'];
 
-$sql = "INSERT INTO reported_issues (user_id, title, content) VALUES ('$id', '$_POST[title]', '$_POST[content]')";
+$stmt2 = $conn->prepare("INSERT INTO issues ( title, content, username ) VALUES ( ?, ?, ? )");
+$stmt2->bind_param("sss", $title, $content, $username);
+$stmt2->execute();
 if ($weekly_reported_issues > 1) {
     $score = $score - 15;
     $weekly_reported_issues = $weekly_reported_issues + 1;
@@ -28,15 +49,17 @@ if ($weekly_reported_issues > 1) {
     $score = $score + 5;
     $weekly_reported_issues = $weekly_reported_issues + 1;
 }
+$stmt3 = $conn->prepare("UPDATE users SET score= ?, weekly_reported_issues= ? WHERE id=?");
+$stmt3->bind_param("iii", $score, $weekly_reported_issues, $id);
+$stmt3->execute();
 
-$sql2 ="UPDATE users SET score='$score', weekly_reported_issues='$weekly_reported_issues' WHERE id = $id";
-if ($conn->query(query: $sql) === TRUE) {
+if ($stmt3->execute() === TRUE) {
     echo "<h1>Thanks for letting us know.</h1>";
     echo "<p>We will look into the issue as soon as possible. But if this issue is false or unneeded your score will be reduced.</p>";
     echo "<a class=btn href='dashboard.php'>Back to dashboard</a>";
 } else{
-    echo "Error: " . $sql ."<br>" . $conn->error;
-}
+    echo "Error: " . $stmt3->error ."<br>" . $conn->error;
+}   
 ?>
 </body>
 </html>

@@ -1,9 +1,12 @@
 <?php
-$servername ="localhost";
-$username = "root";
-$password = "";
-$dbname = "citizens_road_to_survival"; 
-// $dbname = cl27-frazerh
+// $servername ="localhost";
+// $username = "root";
+// $password = "";
+// $dbname = "citizens_road_to_survival"; 
+$servername = "79.170.44.116";
+$username = "cl27-frazerh";
+$password = "q.wW!.nTV";
+$dbname = "cl27-frazerh";
 
 
 
@@ -14,7 +17,6 @@ if ($conn->connect_error){
     die("Connection failed:" . $conn->connect_error);
 }else{
     echo '<p style="display:none;">Connected successfully</p>';
-    '<console class="log">Connected successfully</console>';
 }
 echo '<p style="display:none;">Connected successfully</p>';
 #echo '<p>Connected successfully</p>';

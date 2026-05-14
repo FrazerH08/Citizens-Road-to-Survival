@@ -1,6 +1,9 @@
 <?php
 include 'connectdb.php';
 session_start(); 
+
+$role=$_SESSION['role'];
+$logged_in = $_SESSION['logged_in'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,6 +18,7 @@ session_start();
 </head>
 <body>
     <?php
+
 // if form isn't submitted
 if(!isset($_POST['submit'])){
     header("Location: test.php");
@@ -23,7 +27,9 @@ if(!isset($_POST['submit'])){
 
 $id = $_SESSION['user_id'];
 $shelter_location = $_POST['shelter_location'];
-$score = $_SESSION['score'] -5;
+if ($role != 'admin') {
+    $score = $_SESSION['score'] -5;
+    }
 
             // shelter change validation
             $insert_stmt = $conn->prepare("UPDATE users SET shelter_location = '$shelter_location', score = '$score' WHERE id = ?");
