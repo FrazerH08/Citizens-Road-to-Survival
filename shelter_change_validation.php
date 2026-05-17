@@ -65,6 +65,32 @@ if ($role != 'admin') {
                 echo "Error: " . $insert_stmt->error;
             }
         ?>
-
+    <footer>
+        <div class="f-container">
+            <div class="footer-content">
+                <h3>Contact Us</h3>
+                <p>Email: citizensroadtosurvival@gmail.com</p>
+            </div>
+            <div class="footer-content">
+                <h3> Quick links</h3>
+                <ul class="f-list">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="dashboard.php">Dashboard</a></li>
+                    <li><a href="feedback.php">Feedback</a></li>
+                </ul>
+            </div>
+            <div class="footer-content">
+                <h3>Follow Us</h3>
+                <ul class="social-icons">
+                    <li><a href="https://twitter.com"><i class="fab fa-twitter"></i></a></li>
+                    <li><a href="https://instagram.com"><i class="fab fa-instagram"></i></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="bottom-bar">
+            <p>&copy; 2026 Citizens' Road to Survival. All rights reserved.</p>
+        </div>
+    </footer>
 </body>
 </html>
