@@ -34,6 +34,7 @@ a {
 }
 
 .logo {
+    background-color: #060612;
     color: #D2D2D2;
     font-size: 23px;
 }
@@ -192,6 +193,7 @@ footer {
     padding: 10px 0;
     text-align: center;
     margin-top: 50px;
+    border: 1px solid #ffffff;
 }
 
 .bottom-bar p {
@@ -199,6 +201,20 @@ footer {
     color: #D2D2D2;
     font-size: 16px;
     padding: 7px;
+}
+
+.container {
+    display: grid;
+    column-gap: 10px;
+    grid-template-columns: auto auto;
+    background-color: none;
+    padding: 10px;
+}
+
+.container div {
+    padding: 20px;
+    font-size: 30px;
+    text-align: center;
 }
 
 @media (max-width: 650px) {

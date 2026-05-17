@@ -1,0 +1,29 @@
+.welcomep {
+    text-align: center;
+    font-size: large;
+}
+
+.container img {
+    width: 70%;
+    height: auto;
+}
+
+.big-article-title {
+    font-size: 24px;
+    margin-top: 10px;
+    text-align: center;
+}
+
+@media (max-width: 650px) {
+    .container {
+        grid-template-columns: auto;
+    }
+    .container img {
+        width: 100%;
+        height: auto;
+    }
+    .welcomep {
+        font-size: small;
+        max-width: 100%;
+    }
+}

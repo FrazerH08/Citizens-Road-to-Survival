@@ -16,7 +16,7 @@
     
     <header class="header">
         <div class="header_content">
-            <a href="index.html" class="logo">Citizens' Road to&nbsp;<b>Survival</b></a>
+            <a href="index.php" class="logo">Citizens' Road to&nbsp;<b>Survival</b></a>
             <nav class="nav">
                 <ul class="nav_list">
 
@@ -56,7 +56,7 @@ if($stmt){
 }
 if($stmt->execute()) {
     echo "<h2 style='text-align:center'> Feedback Submitted! We will email you with the email you provided if we have any updates! </h2>";
-    echo "<a text-align:center href='index.html' class='btn'>  Back to Home</a>";
+    echo "<a text-align:center href='index.php' class='btn'>  Back to Home</a>";
 } else{
     echo  "Error: " . $sql ."<br>" . $conn->error;
 }
@@ -70,7 +70,7 @@ if($stmt->execute()) {
             <div class="footer-content">
                 <h3> Quick links</h3>
                 <ul class="f-list">
-                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.php">Home</a></li>
                     <li><a href="about.html">About</a></li>
                     <li><a href="dashboard.php">Dashboard</a></li>
                     <li><a href="feedback.php">Feedback</a></li>
@@ -79,8 +79,8 @@ if($stmt->execute()) {
             <div class="footer-content">
                 <h3>Follow Us</h3>
                 <ul class="social-icons">
-                    <li><a href="https://twitter.com"><i class="fab fa-twitter"></i></a></li>
-                    <li><a href="https://instagram.com"><i class="fab fa-instagram"></i></a></li>
+                    <li><a href="https://x.com/Citizens_RoadTS"><i class="fab fa-twitter"></i></a></li>
+                    <li><a href="https://www.instagram.com/citizensroadtosurvival/"><i class="fab fa-instagram"></i></a></li>
                 </ul>
             </div>
         </div>
