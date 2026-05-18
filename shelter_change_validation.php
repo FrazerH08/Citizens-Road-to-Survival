@@ -4,6 +4,7 @@ session_start();
 
 $role=$_SESSION['role'];
 $logged_in = $_SESSION['logged_in'];
+$score = $_SESSION['score'];
 ?>
 <!DOCTYPE html>
 <html lang="en">

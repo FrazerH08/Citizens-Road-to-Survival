@@ -2,3 +2,71 @@
     max-width: 100%;
     height: auto;
 }
+
+.search-btn {
+    text-align: center;
+    border: 1px solid white;
+    padding: 10px 69px;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #d2d2d2;
+    text-decoration: none;
+    background-color: transparent;
+    display: inline-block;
+    font-size: 120%;
+    transition-duration: 0.4s;
+}
+
+.search-btn a {
+    color: white;
+    text-decoration: none;
+}
+
+.search-btn:hover {
+    background-color: #316E74;
+    border: 1px solid #316E74;
+}
+
+.refresh:hover a {
+    color: white;
+}
+
+.search-button input {
+    padding-left: 5%;
+    padding-right: 5%;
+    font-size: larger;
+    border: 1px solid white;
+}
+
+.search-button i {
+    font-size: larger;
+}
+
+.search-button ::placeholder {
+    color: #d2d2d2;
+}
+
+.search-button button {
+    text-align: center;
+    padding: 10px 28px;
+    border: 1px solid white;
+    background-color: transparent;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 120%;
+    transition-duration: 0.4s;
+    color: white;
+}
+
+.search-button button:hover {
+    background-color: #316E74;
+    color: white;
+}
+
+@media (min-width: 700px) {
+    .listnews-article-image {
+        max-width: 50%;
+        height: auto;
+    }
+}
