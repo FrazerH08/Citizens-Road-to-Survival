@@ -14,7 +14,7 @@ body {
 }
 
 nav {
-    background-color: #060612;
+    /* background-color: #060612; */
     /* background-color: #000E10; */
     margin: 0;
     padding: 0;
@@ -34,13 +34,13 @@ a {
 }
 
 .logo {
-    background-color: #060612;
+    /* background-color: #060612; */
     color: #D2D2D2;
     font-size: 23px;
 }
 
 .header {
-    position: sticky;
+    position:relative;
     width: 100%;
     top: 0;
 }
@@ -186,6 +186,8 @@ footer {
 
 .social-icons i:hover {
     color: #316E74;
+    transition: .4s;
+
 }
 
 .bottom-bar {
@@ -218,11 +220,15 @@ footer {
 }
 
 @media (max-width: 650px) {
+
+    .header{
+        position: sticky;
+    }
     .nav {
         position: fixed;
         top: 60px;
         left: 0;
-        background-color: none;
+        background-color: #060612;
         width: 100%;
         padding: 10px 0 25px;
         transform: translateX(-100%);
