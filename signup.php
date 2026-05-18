@@ -6,6 +6,7 @@
     <title>Signup</title>
     <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="login.css">
+    <!-- <link rel="stylesheet" href="login.css"> -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cambo&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
@@ -34,13 +35,11 @@
             </div>
         </div>
     </header>
-     <h2 class="title"><u>Create Your account</u></h2>
     
-    <!-- register form -->
-    <section class="section">
+<section class="section">
     <div class="wrapper">
         <div class="logreg-box">
-     <div class="form-box register">
+            <div class="form-box signup">
                 <div class="logreg-title">
                     <h2 class="title">Create your account</h2>
                     <p> if you want to survive. </p>
@@ -48,36 +47,90 @@
         <form class="login-form" action="account_validation.php" method='POST'>
                 <div class="input-box">
                     <input type="text" class="box" name="firstname" required>
-                    <!-- placeholder="Enter Username" -->
                     <label class="labels" for="firstname"><b>First name:</b></label>
                 </div>
                 <div class="input-box">
                     <input type="text" class="box" name="lastname" required>
-                    <!-- placeholder="Enter Username" -->
                     <label class="labels" for="lastname"><b>Surname:</b></label>
-                </div>
+                </div> 
                 <div class="input-box">
                     <span class="icon"><i class="bx bx-user"></i></span>
                     <input type="text" class="box" name="username" required>
                     <!-- placeholder="Enter Username" -->
                     <label class="labels" for="username"><b>Username:</b></label>
                 </div>
-                <div class="input-box">
+                    <div class="input-box">
                     <span class="icon"><i class="bx bx-envelope"></i></span>
                     <input type="text" class="box" name="email" required>
-                    <!-- placeholder="Enter Username" -->
                     <label class="labels" for="email"><b>Email:</b></label>
                 </div>
                 <div class="input-box">
                     <span class="icon"><i class="bx bx-calendar"></i></span>
                     <input type="date" class="box" name="birthdate" required>
-                    <!-- placeholder="Enter Username" -->
                     <label class="labels" for="dob"><b>Date of birth:</b></label>
                 </div>
                 <div class="input-box">
                     <span class="icon"><i class="bx bx-lock"></i></span>
                     <input type="password" class="box"  name="password" required>
                     <!-- placeholder="Enter Password" -->
+                    <label class="labels" for="password"><b>Password:</b></label>
+                </div>
+                <div class="remember-forgot">
+                    <label class="labels"><input type="checkbox" class="terms-conditions-check" checked="unchecked" name="remember">I agree to the terms & conditions </label>
+                </div>
+                <div class="next">
+                    <button type="submit" name= "submit" value="submit" class="btn" >Sign up</button>
+                </div>
+                <div class="logreg-link">
+                    <p>If you have an account already , <a href="login.php">Login</a></p>
+                </div>
+            </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+
+    <!-- register form -->
+   <!-- <section class="section">
+    <div class="wrapper">
+        <div class="logreg-box">
+     <div class="form-box signup">
+                <div class="logreg-title">
+                    <h2 class="title">Create your account</h2>
+                    <p> if you want to survive. </p>
+                </div>
+        <form class="login-form" action="account_validation.php" method='POST'>
+                <div class="input-box">
+                    <input type="text" class="box" name="firstname" required>
+                    
+                    <label class="labels" for="firstname"><b>First name:</b></label>
+                </div> 
+                <div class="input-box">
+                    <input type="text" class="box" name="lastname" required>
+                    
+                    <label class="labels" for="lastname"><b>Surname:</b></label>
+                </div>
+                <div class="input-box">
+                    <span class="icon"><i class="bx bx-user"></i></span>
+                    <input type="text" class="box" name="username" required>
+                    
+                    <label class="labels" for="username"><b>Username:</b></label>
+                </div>
+                <div class="input-box">
+                    <span class="icon"><i class="bx bx-envelope"></i></span>
+                    <input type="text" class="box" name="email" required>
+                    
+                    <label class="labels" for="email"><b>Email:</b></label>
+                </div>
+                <div class="input-box">
+                    <span class="icon"><i class="bx bx-calendar"></i></span>
+                    <input type="date" class="box" name="birthdate" required>
+                    <label class="labels" for="dob"><b>Date of birth:</b></label>
+                </div>
+                <div class="input-box">
+                    <span class="icon"><i class="bx bx-lock"></i></span>
+                    <input type="password" class="box"  name="password" required>
                     <label class="labels" for="password"><b>Password:</b></label>
                 </div>
                 <div class="remember-forgot">
@@ -92,8 +145,7 @@
             </div>
 </form>
 </div>
-</div>
-</div>
+</div> -->
 
 <!-- <form action="account_validation.php" method='POST'>
         <p> if you want to survive </p>

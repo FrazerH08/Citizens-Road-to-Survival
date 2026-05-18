@@ -41,7 +41,7 @@
             <div class="form-box login">
                 <div class="logreg-title">
                     <h2 class="title">Access your account</h2>
-                    <p> Your Road to <b>Survival</b> starts here. </p>
+                    <p> Your Road to <b>Survival</b> <br> starts here. </p>
                 </div>
         <form class="login-form" action="login_validation.php" method='POST'>
                 <div class="input-box">
@@ -64,7 +64,7 @@
                     <button type="submit" name= "submit" value="submit" class="btn" >Login</button>
                 </div>
                 <div class="logreg-link">
-                    <p>If you haven't already, <a href="signup.php">Sign up</a></p>
+                    <p>If you haven't already, <br> <a href="signup.php">Sign up</a></p>
                 </div>
             </div>
             </form>
