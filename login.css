@@ -1,0 +1,187 @@
+/* .login-form{
+    text-align: center;
+    background-color: #000E10;
+    border: 1px solid white;
+}
+
+.title{
+    text-align: center;
+}
+
+p{
+    text-align: center;
+} */
+
+/* .section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+} */
+.wrapper {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height:100%;
+    /* transform: translate(-50%, -50%); */
+    width: 450px;
+    background: #000E10;
+    backdrop-filter: blur(15px);
+    box-shadow: -1px 0 10px rgba(0, 0, 0, 0.2);
+    border-left: 2px solid rgba(255, 255, 255, 0.1);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    padding: 0 40px;
+}
+/* .wrapper{
+    position: fixed;
+    top: 0;
+    right: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width:450px;
+    height: 100%;
+    background: #000E10;
+    backdrop-filter: blur(15px);
+    box-shadow: -1px 0 10x rgba(0,0,0 -2);
+    border-left: 2px solid rgba (255,255,255, .1);
+    z-index: 100;
+    display: flex;
+    align-items: center ;
+    padding: 0 40px ;
+    -webkit-transform: translate(-50%,-50%);
+    -moz-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    -o-transform: translate(-50%,-50%);
+} */
+
+.wrapper .logreg-box{
+    width: 100%;
+    /* background: pink; */
+    background: transparent;
+
+
+}
+
+.logreg-box .logreg-title{
+    text-align: center;
+    margin-bottom: 40px;
+    color: #b2b2b2;
+}
+
+.logreg-title h2{
+    font-size: 32px;
+}
+
+.logreg-title p{
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.logreg-box .input-box{
+    position: relative;
+    width: 100%;
+    height: 50px;
+    background: transparent;
+    margin: 30px 0;
+    border-bottom: 2px solid white;
+
+}
+
+.input-box input{
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    color: #b2b2b2;
+    font-weight: 500;
+    padding-right: 25px;
+}
+
+.input-box label{
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    font-size: 16px;
+    font-weight: 500;
+    pointer-events: none;
+    transition: .5s;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+}
+
+
+.input-box input:focus~label,
+.input-box input:focus~label{
+    top: -5px;
+}
+.input-box .icon{
+    position: absolute;
+    top:50%;
+    right: 0;
+    transform: translateY(-50%);
+    font-size: 19px;
+    color: #b2b2b2;
+}
+
+.logreg-box .remember-forgot{
+    font-size: 14.5px;
+    font-weight: 500;
+    margin: -15px 0 15px ;
+    display: flex;
+    justify-content: space-between;
+}
+
+.remember-forgot label input{
+    accent-color: #d2d2d2;
+    margin-right: 3px;
+}
+
+.remember-forgot a{
+    color: #d2d2d2;
+    text-decoration: none;
+}
+
+.remember-forgot a:hover{
+    text-decoration: underline;
+}
+
+.logreg-box .btn{
+    width: 100%;
+    height:45px;
+    background: transparent;
+    border: 1px solid #ffff;
+    outline: none;
+    color:#b2b2b2;
+    border-radius: 2px;
+    box-shadow: 0 2px 5px rgba(0,0,0 -2);
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    transition: all 0.4s;
+}
+.logreg-box .btn:hover{
+    background-color: #316E74;
+    transition: 0.4s;
+}
+
+.logreg-box .logreg-link{
+    font-size: 14.5px;
+    text-align: center;
+    font-weight: 500;
+    margin-top: 25px;
+    margin: 25px 0 15px;
+
+}
+.logreg-link p a{
+    font-weight: 600;
+}
+.logreg-link p a:hover{
+    text-decoration: underline;
+}

@@ -78,7 +78,7 @@ session_start();
             </div>
         </div>
         <div class="bottom-bar">
-            <p>&copy; 2026 Citizens' Road to Survival. All rights reserved.</p>
+            <p>This is a fictional student website.</p>
         </div>
     </footer>    
 </body>

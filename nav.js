@@ -10,3 +10,10 @@ navEl.addEventListener('click', () => {
     navEl.classList.remove('nav--open');
     hamburgerEl.classList.remove('hamburger--open');
 });
+
+// const myPara =document.getElementById("login");
+
+// myPara.innerHTML="<a 'class=nav_item' href=logout.php >Logout</a>";
+
+document.getElementById("login"). href="logout.php";
+document.getElementById("login"). a="Logout";

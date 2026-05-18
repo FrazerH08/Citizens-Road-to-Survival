@@ -1,5 +1,6 @@
 <?php
 include 'connectdb.php';
+// $logged_in = $_SESSION['logged_in'];
 session_start();
 $stmt = $conn->prepare("SELECT * FROM articles ORDER BY time_created DESC");
     $stmt->execute();
@@ -11,7 +12,7 @@ $stmt = $conn->prepare("SELECT * FROM articles ORDER BY time_created DESC");
 ?>
 
 
-<!DOCTYPE htmsl>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -36,7 +37,7 @@ $stmt = $conn->prepare("SELECT * FROM articles ORDER BY time_created DESC");
                 <ul class="nav_list">
                     <li class="nav_item"> <a href="list_articles.php" class="nav_link">News</a></li>
                     <li class="nav_item"> <a href="dashboard.php" class="nav_link">Dashboard</a></li>
-                    <li class="nav_item"> <a href="login.php" class="nav_link">Login</a></li>
+                    <li class="nav_item" id="login"> <a href="login.php" class="nav_link">Login</a></li>
                     <li class="nav_item"> <a href="signup.php" class="nav_link">Sign up</a></li>
                     <li class="nav_item"> <a href="feedback.php" class="nav_link">Feedback</a></li>
                 </ul>
@@ -86,6 +87,8 @@ $stmt = $conn->prepare("SELECT * FROM articles ORDER BY time_created DESC");
         <div> <a class="btn" href="listnews.php"> News</a></div>
         <div> <a class="btn" href="listguides.php">Guides</a></div>
     </div> -->
+
+    <a class="read-more-btn" style="text-align: center;" href="list_articles.php">Read More</a>
     <footer>
         <div class="f-container">
             <div class="footer-content">
@@ -110,7 +113,7 @@ $stmt = $conn->prepare("SELECT * FROM articles ORDER BY time_created DESC");
             </div>
         </div>
         <div class="bottom-bar">
-            <p>&copy; 2026 Citizens' Road to Survival. All rights reserved.</p>
+            <p>This is a fictional student website.</p>
         </div>
     </footer>
 

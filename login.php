@@ -10,6 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cambo&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://cdn.boxicons.com/3.0.8/fonts/basic/boxicons.min.css" rel="stylesheet">
     <script src="nav.js" defer></script>
 </head>
 <body>
@@ -34,22 +35,43 @@
             </div>
         </div>
     </header>
-<h1 class="title">Access your account</h1>
-<form class="login-form" action="login_validation.php" method='POST'>
-        <br> <label class="labels" for="username"><b>Username:</b></label>
-        <br><input type="text" class="box"placeholder="Enter Username" name="username" required> <br>
-        <br> <br> <label class="labels" for="password"><b>Password:</b></label>
-        <br><input type="password" class="box" placeholder="Enter Password" name="password" required>
-        <label class="labels">
-      <br> <input type="checkbox" class="remember-me" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
-        </label>
-        <div class="next">
-            <button type="submit" name= "submit" value="submit" class="signupbtn" >Login</button>
+<section class="section">
+    <div class="wrapper">
+        <div class="logreg-box">
+            <div class="form-box login">
+                <div class="logreg-title">
+                    <h2 class="title">Access your account</h2>
+                    <p> Your Road to <b>Survival</b> starts here. </p>
+                </div>
+        <form class="login-form" action="login_validation.php" method='POST'>
+                <div class="input-box">
+                    <span class="icon"><i class="bx bx-user"></i></span>
+                    <input type="text" class="box" name="username" required>
+                    <!-- placeholder="Enter Username" -->
+                    <label class="labels" for="username"><b>Username:</b></label>
+                </div>
+                <div class="input-box">
+                    <span class="icon"><i class="bx bx-lock"></i></span>
+                    <input type="password" class="box"  name="password" required>
+                    <!-- placeholder="Enter Password" -->
+                    <label class="labels" for="password"><b>Password:</b></label>
+                </div>
+                <div class="remember-forgot">
+                    <label class="labels"><input type="checkbox" class="remember-me" checked="checked" name="remember"> Remember me</label>
+                    <a href="#">Forgot Password?</a>
+                </div>
+                <div class="next">
+                    <button type="submit" name= "submit" value="submit" class="btn" >Login</button>
+                </div>
+                <div class="logreg-link">
+                    <p>If you haven't already, <a href="signup.php">Sign up</a></p>
+                </div>
+            </div>
+            </form>
         </div>
-    </form>
-
-    <p>If you haven't already,<a href="signup.php"> Sign up </a></p>
-    <?php
+    </div>
+</section>
+<?php
     if(isset($_POST['submit'])){
         $username =mysqli_real_escape_string($conn,$_POST['username']);
         $password =mysqli_real_escape_string($conn,$_POST['password']);
@@ -97,7 +119,7 @@
             </div>
         </div>
         <div class="bottom-bar">
-            <p>&copy; 2026 Citizens' Road to Survival. All rights reserved.</p>
+            <p>This is a fictional student website.</p>
         </div>
     </footer>
 </body>
