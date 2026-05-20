@@ -107,7 +107,8 @@ if($role === 'admin'){
 
                 // echo '<p>Description: ' . htmlspecialchars($row['description']) . '</p>';
                 echo '<p>Created By: ' . htmlspecialchars($row['username']) . '</p>';
-                echo '<p>Article written: ' . htmlspecialchars($row['time_created']) . '</p>';
+                echo "<p>". date("F j, Y, g:i a", strtotime($row['time_created'])) . "</p>";
+                // echo '<p>Article written: ' . htmlspecialchars($row['time_created']) . '</p>';
                 echo '</section>';
             }
         } else {

@@ -6,7 +6,7 @@
     <title> Article</title>
     <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="retrieve_news.css">
-    <link rel="stylesheet" href="feedback.css">
+    <!-- <link rel="stylesheet" href="feedback.css"> -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cambo&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
@@ -40,7 +40,7 @@ include 'connectdb.php';
 session_start();
 $article_id = $_GET['id'];
 
-$sql = "SELECT title, description, content, picture, username FROM articles WHERE id = ?";
+$sql = "SELECT title, description, content, picture, username, time_created FROM articles WHERE id = ?";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("i", $article_id);
 $stmt->execute();
@@ -48,6 +48,7 @@ $result = $stmt->get_result();
 
 if($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()){
+        echo '<section class="postCard2">';
         if (!empty($row['picture'])) {
             echo "<h1>" . html_entity_decode($row['title']) . "</h1>";
             // If it's a file path
@@ -64,19 +65,22 @@ if($result->num_rows > 0) {
             }
         }
         echo '<h2> Created By: ' . html_entity_decode($row['username']) . "</h2>";
-        echo '<section class="postCard2">';
-
+        // echo '<section class="postCard2">';
+        echo "<p>". date("F j, Y, g:i a", strtotime($row['time_created'])) . "</p>";
         echo "<h3>" . html_entity_decode($row['description']) . "</h3>";
         echo "<p>" . html_entity_decode($row['content']) . "</p>";
         // Check if picture exists and is not null
         echo '</section>';
     }
 } else {
-    echo "Sorry, 0 Results Returned";
+    echo "0 Results Returned";
 }
 $stmt->close();
 $conn->close();
 ?>
+    <div class="read-more-btn-container">
+        <a class="read-more-btn" style="text-align: center;" href="list_articles.php">Read More</a>
+    </div>
     <footer>
         <div class="f-container">
             <div class="footer-content">

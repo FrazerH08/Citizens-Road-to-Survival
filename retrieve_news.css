@@ -1,0 +1,39 @@
+    .postCard2 {
+        border: 1px solid #316E74;
+        padding: 15px;
+        border-radius: 5px;
+        background-color: #000E10;
+        color: #b2b2b2;
+        text-align: left;
+        margin-left: 230px;
+        margin-right: 230px;
+        margin-top: 30px;
+        margin-bottom: 30px;
+        line-height: 1.6;
+    }
+    
+    .postCard2 img {
+        align-items: center;
+        border: 1px solid white;
+        margin-left: auto;
+        margin-right: auto;
+        display: flex;
+        justify-content: center;
+        transition: all 0.4s;
+        max-height: 800px;
+    }
+    
+    .postCard2 img:hover {
+        transform: scale(1.02);
+    }
+    
+    .postCard2 h1 {
+        text-align: center;
+    }
+    
+    @media (max-width: 650px) {
+        .postCard2 {
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+    }
