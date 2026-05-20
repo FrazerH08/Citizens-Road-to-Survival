@@ -49,11 +49,12 @@ $stmt = $conn->prepare("SELECT * FROM articles ORDER BY time_created DESC");
             </div>
         </div>
     </header>
-
+<div class="opening-message">
     <p class="welcomep">
         This website is an fictional scenario, set in 2067 after an environmental collapse after a lack of global care and a totalitarian government. Your aim is to survive and eventually gain enough score for safety and be a part of a government with a lot of control. 
        <br> Good luck, citizen. 
     </p>
+</div>
     <div class="container">
 
     

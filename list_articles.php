@@ -96,16 +96,16 @@ if($role === 'admin'){
                   if (!empty($row['picture'])) {
                     echo '<img src="' . htmlspecialchars($row['picture']) . '" alt="Article image" class="listnews-article-image">';
                 }
-                echo '<p><a class=article-title href="retrieve_articles.php?id=' . htmlspecialchars($row['id']) . '">' .  '<b>', htmlspecialchars($row['title']) . '</b>' , '</a></p>';
+                echo '<p><a class=article-title href="retrieve_articles.php?id=' . htmlspecialchars($row['id']) . '">' .  '<b>' . htmlspecialchars($row['title']) . '</b>' . '</a></p>';
 
                 if($role === 'admin'){
                     echo '<p>
-                        <a class=btn href="edit_news.php?id=' . htmlspecialchars($row['id']) . '">Edit</a> |
-                        <a class=btn onclick="return confirm(\'Do You Really Want To Delete This?\')" href="delete_news.php?id=' . htmlspecialchars($row['id']) . '">Delete</a>
+                        <a class=edit-btn href="edit_news.php?id=' . htmlspecialchars($row['id']) . '">Edit</a> |
+                        <a class=delete-btn onclick="return confirm(\'Do You Really Want To Delete This?\')" href="delete_news.php?id=' . htmlspecialchars($row['id']) . '">Delete</a>
                     </p>';
                 }
 
-                echo '<p>Description: ' . htmlspecialchars($row['description']) . '</p>';
+                // echo '<p>Description: ' . htmlspecialchars($row['description']) . '</p>';
                 echo '<p>Created By: ' . htmlspecialchars($row['username']) . '</p>';
                 echo '<p>Article written: ' . htmlspecialchars($row['time_created']) . '</p>';
                 echo '</section>';

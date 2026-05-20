@@ -47,6 +47,18 @@
     text-align: center;
 }
 
+.welcomep {
+    font-size: 22px;
+    max-width: 60%;
+    text-align: center;
+}
+
+.opening-message {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
 @media (max-width: 650px) {
     .container {
         grid-template-columns: auto;
