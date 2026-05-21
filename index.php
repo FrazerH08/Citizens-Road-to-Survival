@@ -2,6 +2,7 @@
 include 'connectdb.php';
 // $logged_in = $_SESSION['logged_in'];
 session_start();
+
 $stmt = $conn->prepare("SELECT * FROM articles ORDER BY time_created DESC");
     $stmt->execute();
     $result = $stmt->get_result();

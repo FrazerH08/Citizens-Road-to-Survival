@@ -44,7 +44,9 @@ $logged_in = $_SESSION['logged_in'];
 if($logged_in == false) {
     header("Location: login.php");
 }
-
+echo '<div class="logout-btn">';
+echo '<a href="logout.php" class="btn">Logout</a>';
+echo '</div>';
 if($role !='admin' ){
     echo '<section class="dashboard">';
     $stmt= $conn->prepare ("SELECT * FROM users WHERE id= ?");
