@@ -231,6 +231,8 @@ footer {
     text-align: center;
     background-color: #000E10;
     border: 1px solid white;
+    color: #b2b2b2;
+    font-family: "Montserrat", sans-serif;
     padding: 10px 68px;
     align-items: center;
     border-radius: 2px;
@@ -238,6 +240,7 @@ footer {
     margin-right: 0;
     margin-left: 0;
     transition: all 0.4s;
+    cursor: pointer;
 }
 
 .read-more-btn:hover,
@@ -254,7 +257,6 @@ footer {
     font-size: 16px;
     text-align: center;
 }
-
 @media (max-width: 650px) {
     .header {
         position: sticky;

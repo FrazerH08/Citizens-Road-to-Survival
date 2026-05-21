@@ -30,10 +30,23 @@
     .postCard2 h1 {
         text-align: center;
     }
-    
+    .comment-btn{
+        width:20%;
+        background-color: transparent;
+        font-size: 18px;
+    }
     @media (max-width: 650px) {
         .postCard2 {
             margin-left: 20px;
             margin-right: 20px;
+        }
+        .comment-btn{
+            width:100%;
+            display: flex;
+            background-color: transparent;
+            justify-content: center;
+            margin-top: 20px;
+            margin-top: -3px;
+            margin-bottom: 20px;
         }
     }

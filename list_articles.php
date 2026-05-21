@@ -100,8 +100,8 @@ if($role === 'admin'){
 
                 if($role === 'admin'){
                     echo '<p>
-                        <a class=edit-btn href="edit_news.php?id=' . htmlspecialchars($row['id']) . '">Edit</a> |
-                        <a class=delete-btn onclick="return confirm(\'Do You Really Want To Delete This?\')" href="delete_news.php?id=' . htmlspecialchars($row['id']) . '">Delete</a>
+                        <a class=edit-btn href="edit_article.php?id=' . htmlspecialchars($row['id']) . '">Edit</a> |
+                        <a class=delete-btn onclick="return confirm(\'Do You Really Want To Delete This?\')" href="delete_articles.php?id=' . htmlspecialchars($row['id']) . '">Delete</a>
                     </p>';
                 }
 

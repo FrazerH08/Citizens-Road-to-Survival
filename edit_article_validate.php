@@ -3,19 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Thread </title>
+    <title>Edit news validate</title>
     <link rel="stylesheet" href="main.css">
-    <link rel="stylesheet" href="retrieve_news.css">
-    <link rel="stylesheet" href="feedback.css">
+    <link rel="stylesheet" href="edit_news.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cambo&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <script src="nav.js" defer></script>
 </head>
 <body>
-    
-    <header class="header">
+ <header class="header">
         <div class="header_content">
             <a href="index.php" class="logo">Citizens' Road to&nbsp;<b>Survival</b></a>
             <nav class="nav">
@@ -38,76 +34,78 @@
 <?php
 include 'connectdb.php';
 session_start();
-$thread_id = $_GET['id'];
-$score= $_SESSION['score'];
+// var_dump($_POST);
 
-if($score < 20){
-    header(header:"Location: index.php");
-}
-    
-$sql = "SELECT title, description, content, username FROM threads WHERE id = ?";
-$stmt = $conn->prepare($sql);
-$stmt->bind_param("i", $thread_id);
-$stmt->execute();
-$result = $stmt->get_result();
+///put a foreach loop to find out the keys in $_POST / $_FILES
+// foreach ($_FILES as $key => $value){
+//     echo($key . ' this is adams debug test');
+//   }
+$target_dir = "uploads/";
+$target_file = $target_dir . basename ($_FILES["fileToUpload"]["name"]);
+$uploadOk = 1;
+$imageFileType =strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+// Below Checks if an  image file is a actual image or fake image.
 
-if($result->num_rows > 0) {
-    while ($row = $result->fetch_assoc()){
-        echo '<section class="postCard2">';
-        echo "<h1>" . html_entity_decode($row['title']) . "</h1>";
-        echo '<h2> Created By: ' . html_entity_decode($row['username']) . "</h2>";
-        echo "<h3>" . html_entity_decode($row['description']) . "</h3>";
-        echo "<p>" . html_entity_decode($row['content']) . "</p>";
-        // Check if picture exists and is not null
-        echo '</section>';
+if(isset($_POST['submit'])) {
+    $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+    if($check !== false){
+        echo "File is an image - " . $check["mime"]. ".";
+        $uploadOk = 1;
+    } else{
+        echo "File is not an image.";
+        $uploadOk = 0;
     }
-} else {
-    echo "Sorry, 0 Results Returned";
+}
+// check if file already exists
+if (file_exists($target_file)){
+    echo "Sorry this file already exists.";
+    $uploadOk = 0;
 }
 
+// file size check
+if ($_FILES["fileToUpload"]["size"] > 5000000) {
+    echo " Sorry this file is too large";
+    $uploadOk = 0;
+}
+// file type check
+if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType !="jpeg" && $imageFileType != "gif"){
+    echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed. ";
+}
 
+// upload ok check
+if ($uploadOk == 0 ){
+    echo "Sorry your file was not uploaded.";
+} else{
+    if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)){
+        echo "The file". htmlspecialchars ( basename($_FILES["fileToUpload"]["name"])). "has been updated.";
+    } else{
+        echo "Sorry they was an error uploading your file.";
+    }
+}
+$id = $_POST['id'];
+$title = $_POST['title'];
+$description = $_POST['description'];
+$content = $_POST['content'];
+$picture = basename($_FILES['fileToUpload']['name']);
+
+
+$sanitisedTitle = htmlentities(string: $title);
+$sanitisedDescription = htmlentities(string: $description);
+$sanitisedPost = htmlentities(string: $content);
+
+
+$sql ="UPDATE articles SET title='$sanitisedTitle', description='$sanitisedDescription', content='$sanitisedPost' , picture='$target_file' WHERE id = $id";
 ?>
 
 <?php
-if (isset($_SESSION['user_id'])){
-    echo '
-    <section class="comment-form">
-        <form method="POST" action="post_thread_replies.php">
-            <textarea name="text" class="comment-btn" placeholder="What would you like to comment..." required></textarea><br>
-            <input type="hidden" name="thread_id" value="'. htmlspecialchars($thread_id) . '">
-            <div class="comment-btn">
-                <button class="btn" type="submit">Post Comment</button>
-            </div>
-        </form>
-    </section>';
+if ($conn->query(query: $sql) === TRUE) {
+    echo "<h1>New record created successfully</h1>";
+    echo "<a class=btn href='list_articles.php'>Back to news</a>";
 } else{
-    echo '<p>Please <a href="login.php" class="btn">Log In</a> to comment </p>';
+    echo "Error: " . $sql ."<br>" . $conn->error;
 }
-
-$commentQuery = "SELECT t.text, t.date_created, u.username
-                 FROM threads_replies t
-                 JOIN users u ON t.user_id = u.id
-                 WHERE t.thread_id = ?
-                 ORDER BY t.date_created ASC";
-$commentStmt = $conn->prepare($commentQuery);
-$commentStmt->bind_param("i", $thread_id);
-$commentStmt->execute();
-$commentResult = $commentStmt->get_result();
-
-echo '<section class="comments">';
-echo '<h3>Comments:</h3>';
-while ($comment = $commentResult->fetch_assoc()) {
-    echo "<div class='comment-box'>";
-    echo "<strong>" . htmlspecialchars($comment['username']) . "</strong><br>";
-    echo "<p>" . nl2br(htmlspecialchars($comment['text'])) . "</p>";
-   echo "<p>". date("F j, Y, g:i a", strtotime($comment['date_created'])) . "</p>";
-    echo "</div><hr>";
-}
-echo '</section>';
-$stmt->close();
-$conn->close();
 ?>
-    <footer>
+<footer>
         <div class="f-container">
             <div class="footer-content">
                 <h3>Contact Us</h3>
@@ -137,3 +135,4 @@ $conn->close();
 </body>
 </html>
 <?php
+

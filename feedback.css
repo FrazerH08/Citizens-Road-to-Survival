@@ -10,6 +10,7 @@ textarea {
     margin-top: 1%;
     margin-bottom: 1%;
     resize: vertical;
+    color: #d2d2d2;
 }
 
 input[type=submit] {

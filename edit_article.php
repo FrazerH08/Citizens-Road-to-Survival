@@ -1,13 +1,27 @@
 <?php
-include 'connectdb.php';
-session_start(); 
+    session_start();
 
-$logged_in = $_SESSION['logged_in'];
-$role = $_SESSION['role'];
+    include 'connectdb.php';
+    $id = $_GET['id'];
 
-if($role != 'admin' || $logged_in == false) {
-    header(header:"Location: list_articles.php");
-}
+    $SQL = "SELECT title, description, content, picture FROM articles WHERE id = $id";
+
+    $result= $conn->query($SQL);
+    $logged_in = $_SESSION['logged_in'];
+    $role = $_SESSION['role'];
+    if($role != 'admin' || $logged_in == false) {
+        header("Location: list_articles.php");
+    }
+    $row = $result->fetch_assoc();
+
+    if($result->num_rows == 0) {
+        echo "No Article Found!";
+    }else{
+        $title =  html_entity_decode($row['title']);
+        $description =  html_entity_decode($row['description']);
+        $content =  html_entity_decode($row['content']);
+        $picture = $row['picture'];
+    }
 
 ?>
 <!DOCTYPE html>
@@ -15,18 +29,16 @@ if($role != 'admin' || $logged_in == false) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Create News </title>
+    <title>Edit Article </title>
     <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="edit_article.css">
     <link rel="stylesheet" href="feedback.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cambo&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <script src="nav.js" defer></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cambo&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">   
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
-    
     <header class="header">
         <div class="header_content">
             <a href="index.php" class="logo">Citizens' Road to&nbsp;<b>Survival</b></a>
@@ -47,23 +59,22 @@ if($role != 'admin' || $logged_in == false) {
             </div>
         </div>
     </header>
-<h1><u>Create Article</u></h1>
-    <div class="formcss">
-    <form action="add_article_validate.php" method="post" enctype="multipart/form-data">
-    <label for="title">Title: </label><br>
-        <input type="text" name="title" id="title" placeholder="New Post Title" size="50" required>
+<h1><u>Edit Article</u></h1>
+<form action="edit_article_validate.php" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="id" value="<?php echo $id;?>">
+        <label for="title">Title: </label><br>
+        <input type="text" name="title" id="title" value="<?php echo $title;?>" size="34">
         <br>
         <label for="description_txt">Description: </label><br>
-        <textarea name="description" id="description_txt" cols="100" rows="10" placeholder="New News Description" required></textarea><br>
+        <textarea name="description" id="description_txt" cols="100" rows="10"><?php echo $description; ?></textarea><br>
         <label for="content">Content: </label><br>
-        <textarea name="content" id="content" cols="180" rows="26" placeholder="Enter News Content" required></textarea>
+        <textarea name="content" id="content" cols="180" rows="26"><?php echo $content; ?></textarea>
         <br>
-        <input type="submit" class="btn" onclick="alert('Thanks for submitting!')"></input>
+        <button type="submit" class="btn" onclick="alert('Thanks for submitting!')">Submit</button>
         <label for="pictureup" class="btn">Choose Image </label>
-        <input type="file" style="display: none;" id="pictureup"name="fileToUpload">
+        <input type="file" style="display:none;"  id="pictureup"name="fileToUpload">
     </form>
-    </div>
-    <footer>
+<footer>
         <div class="f-container">
             <div class="footer-content">
                 <h3>Contact Us</h3>
@@ -92,4 +103,3 @@ if($role != 'admin' || $logged_in == false) {
     </footer>
 </body>
 </html>
-
