@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
     <link rel="stylesheet" href="main.css">
-    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="request_shelter_change.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cambo&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
@@ -13,7 +13,6 @@
     <script src="nav.js" defer></script>
 </head>
 <body>
-    
     <header class="header">
         <div class="header_content">
             <a href="index.php" class="logo">Citizens' Road to&nbsp;<b>Survival</b></a>
@@ -52,11 +51,13 @@ if($logged_in == false) {
         $row =$result->fetch_assoc();
         $shelterlocation = $row['shelter_location'];
         $score = $row['score'];
-
-echo "<h2> Your current shelter location is: <b> $shelterlocation </b> </h2>" ;
-echo "<p> If you are happy with your current location , return back to <a href= dashboard.php > Dashboard </a> </p> "
 ?> 
 <form action="shelter_change_validation.php" method="POST" enctype="multipart/form-data">
+    <?php
+    echo "<h2> Your current shelter location is: <b> $shelterlocation </b> </h2>" ;
+    echo "<p> If you are happy with your current location , return back to <a class='dashboard-link' href= dashboard.php > Dashboard </a> </p> ";
+    ?>
+    <h2> If you want to change your shelter location, select a new one from below: </h2>
 <select name="shelter_location" required>
     <option value="" disabled selected>Select County</option>
     <option value="Bedfordshire">Bedfordshire</option>

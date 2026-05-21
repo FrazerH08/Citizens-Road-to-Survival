@@ -11,6 +11,36 @@
     <link href="https://fonts.googleapis.com/css2?family=Cambo&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <script src="nav.js" defer></script>
+    <style>
+        .edit-score-validation {
+            display: flex;
+            padding: 20px;
+            background-color: #000E10;
+            border: 1px solid #b2b2b2;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            max-height:30% ;
+            max-width: 50%;
+            margin: 50px auto;
+        }
+        .edit-score-validation .title {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 650px) {
+            .edit-score-validation {
+                max-width: 90%;
+            }
+            .edit-score-validation .title {
+                font-size: 18px;
+            }
+            .edit-score-validation a.btn {
+                max-width: 100%;
+            }
+        }
+    </style>
 </head>
 <body>
     
@@ -39,14 +69,18 @@ include 'connectdb.php';
 session_start();
 $id = $_POST['id'];
 $score = $_POST['score'];
-
+echo '<div class="edit-score-validation">';
+if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] == false) {
+    header(header:"Location: login.php");
+}
 $sql ="UPDATE users SET score='$score'  WHERE id = $id";
 if ($conn->query(query: $sql) === TRUE) {
     echo "<h1>Changes have been made successfully</h1>";
-    echo "<a class=btn href='review_score.php'>Back to manage scores</a>";
+    echo "<a class='btn' href='review_score.php'>Back to manage scores</a>";
 } else{
     echo "Error: " . $sql ."<br>" . $conn->error;
 }
+echo '</div>';
 ?>
     <footer>
         <div class="f-container">

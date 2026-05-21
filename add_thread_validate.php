@@ -10,6 +10,36 @@
     <link href="https://fonts.googleapis.com/css2?family=Cambo&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <script src="nav.js" defer></script>
+    <style>
+        .add-thread-validation {
+            display: flex;
+            padding: 20px;
+            background-color: #000E10;
+            border: 1px solid #b2b2b2;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            max-height:30% ;
+            max-width: 50%;
+            margin: 50px auto;
+        }
+        .add-thread-validation .title {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 650px) {
+            .add-thread-validation {
+                max-width: 90%;
+            }
+            .add-thread-validation .title {
+                font-size: 18px;
+            }
+            .add-thread-validation a.btn {
+                max-width: 100%;
+            }
+        }
+ </style>
 </head>
 <body>
     
@@ -44,18 +74,19 @@ $username = $_SESSION['username'];
 $sanitisedTitle = htmlentities(string: $title);
 $sanitisedDescription = htmlentities(string: $description);
 $sanitisedPost = htmlentities(string: $content);
-
+echo '<div class="add-thread-validation">';
 $sql ="INSERT INTO threads (title, description, content, username) VALUES ('$sanitisedTitle', '$sanitisedDescription', '$sanitisedPost', '$username')";
 ?>
 
     <?php
     if ($conn->query(query: $sql) === TRUE) {
         echo "<h1 class='title' >Thread created</h1>";
-        echo "<a href='threads.php' style='display:block; text-align:center; class=btn'>Back to  threads </a>";
+        echo "<a href='threads.php' text-align:center; class='btn'>Back to  threads </a>";
     } else{
         echo "Error: " . $sql ."<br>" . $conn->error;
     }
-    ?>
+    echo '</div>';
+     ?>
         <footer>
         <div class="f-container">
             <div class="footer-content">

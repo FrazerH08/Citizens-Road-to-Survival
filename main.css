@@ -258,6 +258,10 @@ footer {
     text-align: center;
 }
 
+form {
+    font-family: "Montserrat", sans-serif;
+}
+
 @media (max-width: 650px) {
     .header {
         position: sticky;

@@ -17,6 +17,36 @@ $score = $_SESSION['score'];
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cambo&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <script src="nav.js" defer></script>
+    <style>
+        .shelter-change-validation {
+            display: flex;
+            padding: 20px;
+            background-color: #000E10;
+            border: 1px solid #b2b2b2;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            max-height:30% ;
+            max-width: 50%;
+            margin: 50px auto;
+        }
+        .shelter-change-validation .title {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 650px) {
+            .shelter-change-validation {
+                max-width: 90%;
+            }
+            .shelter-change-validation .title {
+                font-size: 18px;
+            }
+            .shelter-change-validation a.btn {
+                max-width: 100%;
+            }
+        }
+    </style>
 </head>
 <body>
     
@@ -57,14 +87,15 @@ if ($role != 'admin') {
             // shelter change validation
             $insert_stmt = $conn->prepare("UPDATE users SET shelter_location = '$shelter_location', score = '$score' WHERE id = ?");
             $insert_stmt->bind_param("i", $id);
-
+            echo '<div class="shelter-change-validation">';
             if($insert_stmt->execute()){
                 echo "<h2 class='title'> Your new shelter location is: <b> $shelter_location </b> </h2><br>";
-                echo "<div class='accvalid'><a href='dashboard.php' class='btn'>Back to Dashboard</a></div>";
+                echo "<a href='dashboard.php' class='btn'>Back to Dashboard</a>";
             } else {
                 echo "<h1 class='title'>Error: Shelter change failed</h1><br>";
                 echo "Error: " . $insert_stmt->error;
             }
+            echo '</div>';
         ?>
     <footer>
         <div class="f-container">

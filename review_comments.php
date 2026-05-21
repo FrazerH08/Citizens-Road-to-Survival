@@ -7,12 +7,41 @@
     <title>Edit Score </title>
     <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="edit_news.css">
-    <link rel="stylesheet" href="edit_score.css">
+    <link rel="stylesheet" href="feedback.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cambo&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">   
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <script src="nav.js" defer></script>
+    <style>
+        .comment-container {
+        display: grid;
+        grid-template-areas: "thread_id user_id text time edit";
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        gap: 10px;
+        background-color: #000E10;
+        border: 1px solid #316E74;
+        padding: 20px;
+        margin-bottom: 20px;
+        column-count: 5;
+        column-gap: 10px;
+        column-rule: 1px solid white;
+        margin-top: 30px;
+    }
+
+    
+    @media (max-width: 650px) {
+        .comment-container {
+            grid-template-areas: "thread_id"
+                                 "user_id"
+                                 "text"
+                                 "time"
+                                 "edit";
+            grid-template-columns: auto;
+            column-count: 1;
+        }
+    }
+    </style>
 </head>
 <body>
     
@@ -36,54 +65,45 @@
             </div>
         </div>
     </header>
+    <h1 class=>Review Comments</h1>
+    <p>If any comments are found, they will be displayed below:</p>
+    <p> Comments which you find need to be reported manage their score with the edit score button.</p>
     <?php
     session_start();
 
     include 'connectdb.php';
-    $id = $_GET['id'];
 
-    $SQL = "SELECT * FROM users WHERE id = $id";
-
-    $result= $conn->query($SQL);
+    $stmt = $conn->prepare("SELECT * FROM threads_replies ORDER BY date_created DESC");
+    $stmt->execute();
+    $result = $stmt->get_result();
     $logged_in = $_SESSION['logged_in'];
     $role = $_SESSION['role'];
     if( $logged_in == false || $role != 'admin') {
         header(header:"Location: login.php");
     }
-    $row = $result->fetch_assoc();
-
+        while ($row = $result->fetch_assoc()) {
+        $comments[] = $row;
+    }
     if($result->num_rows == 0) {
         echo "No User Found!";
-    }else{
-        $users_role =  html_entity_decode($row['role']);
-        $score =  html_entity_decode($row['score']);
-        $fname =  html_entity_decode($row['firstname']);
-        $sname =  html_entity_decode($row['lastname']);
+    }else{ 
+        foreach($comments as $row) {
+            $thread_id =  html_entity_decode($row['thread_id']);
+            $user_id =  html_entity_decode($row['user_id']);
+            $text =  html_entity_decode($row['text']);
+            $time =  html_entity_decode($row['date_created']);
+
+            echo "<div class='comment-container'>";
+            echo "<p><strong>Thread ID:</strong> $thread_id</p>";
+            echo "<p><strong>User ID:</strong> $user_id</p>";
+            echo "<p><strong>Comment:</strong> $text</p>";
+            echo "<p>". date("F j, Y, g:i a", strtotime($time)) . "</p>";
+            echo '<a class="btn" onclick="return confirm(\'Do You Really Want To Edit This?\')" href="edit_score.php?id=' . htmlspecialchars($row['user_id']) . '">Edit Score</a>';
+            echo "</div>";
+        }
     }
-    if($users_role == 'admin') {
-        echo "<div class='admin-warning'>";
-        echo "<h4>You cannot edit an admin's score!</h4>";
-        $score = $score -10;
-        $updateSQL = "UPDATE users SET score = $score WHERE id = $id";
-        $conn->query($updateSQL);
-        echo '<br>';
-        echo "<p>10 points have been deducted from your score for trying to edit an admin's score!</p>";
-        echo '<br>'; 
-        echo "<p>Be careful if you lose so many points you will lose your priveleges!</p>";
-        echo "<br><a style = margin-top:10px; class='btn' href='review_comments.php'>Go Back</a>";
-        echo "</div>";
-        exit();
-    }
-?>
-<h1 style="text-align: center;"><u>Edit Score </u></h1>
-<form action="edit_score_validate.php" method="post" enctype="multipart/form-data">
-        <input type="hidden" name="id" value="<?php echo $id;?>">
-        <label for="title">Name: <?php echo $fname . " " . $sname; ?> </label><br>
-        <label for="score"> Score: <?php echo $score ?></label>
-        <input type="number" placeholder="Enter new score" id="score" name="score" min="1" max="100" required><br>
-        <br>
-        <button type="submit" class="btn" onclick="alert('Thanks for submitting and making this civilians score fair!')">Submit</button>
-    </form>
+    ?>
+</div>
     <footer>
         <div class="f-container">
             <div class="footer-content">

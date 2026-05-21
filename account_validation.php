@@ -14,6 +14,36 @@ session_start();
     <link href="https://fonts.googleapis.com/css2?family=Cambo&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <script src="nav.js" defer></script>
+    <style>
+        .accvalidiation {
+            display: flex;
+            padding: 20px;
+            background-color: #000E10;
+            border: 1px solid #b2b2b2;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            max-height:30% ;
+            max-width: 50%;
+            margin: 50px auto;
+        }
+        .accvalidiation .title {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 650px) {
+            .accvalidiation {
+                max-width: 90%;
+            }
+            .accvalidiation .title {
+                font-size: 14px;
+            }
+            .accvalidiation a.btn {
+                max-width: 100%;
+            }
+        }
+    </style>
 </head>
 <body>
     
@@ -51,7 +81,7 @@ $firstname = $_POST['firstname'];
 $lastname = $_POST['lastname'];
 $birthdate = $_POST['birthdate'];
 $score = 50;
-
+echo '<div class="accvalidiation">';
 // email check
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     die("<h1 class='title'>Invalid email format</h1>");
@@ -77,9 +107,8 @@ if (strlen($password) < 8) {
         $stmt->bind_param("s", $email);
         $stmt->execute();
         $result = $stmt->get_result();
-
         if($result->num_rows > 0){
-            echo "<h1 class='title'>Email is already taken,change email, stop making this confusing we are trying our best to keep you safe and you cant even get your email correct!</h1><br>";
+            echo "<h2 class='title'>Email is already taken,change email, stop making this confusing we are trying our best to keep you safe and you cant even get your email correct!</h2><br>";
             echo "<div class='accvalid'><a href='javascript:self.history.back()' class='btn'> Go Back</a></div>";
         } else {
             // Hash the password , incase it gets hacked, based on testscript file
@@ -93,10 +122,11 @@ if (strlen($password) < 8) {
                 echo "<h2 class='title'> Personal details matched with our records, Registration was successful</h2><br>";
                 echo "<div class='accvalid'><a href='login.php' class='btn'>Login</a></div>";
             } else {
-                echo "<h1 class='title'>Error: Registration failed</h1><br>";
+                echo "<h2 class='title'>Error: Registration failed</h2><br>";
                 echo "Error: " . $insert_stmt->error;
             }
         }
+            echo '</div>';
         ?>
     <footer>
         <div class="f-container">

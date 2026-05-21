@@ -11,7 +11,36 @@
     <link href="https://fonts.googleapis.com/css2?family=Cambo&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <script src="nav.js" defer></script>
+    <style>
+        .login-validation {
+            display: flex;
+            padding: 20px;
+            background-color: #000E10;
+            border: 1px solid #b2b2b2;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            max-height:30% ;
+            max-width: 50%;
+            margin: 50px auto;
+        }
+        .login-validation .title {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
 
+        @media (max-width: 650px) {
+            .login-validation {
+                max-width: 90%;
+            }
+            .login-validation .title {
+                font-size: 18px;
+            }
+            .login-validation a.btn {
+                max-width: 100%;
+            }
+        }
+    </style>
 </head>
 <body>
     
@@ -48,7 +77,7 @@
     $stmt->execute();
     $result = $stmt->get_result();
     $user = $result->fetch_assoc();
-
+    echo '<div class="login-validation">';
     // Add debugging
     // echo "Debug - User found: ";
     // var_dump($user);
@@ -76,6 +105,7 @@
         echo "<a class='btn' text-align:center href='javascript:self.history.back()'> Go Back</a>";
     }
 }
+echo '</div>';
         ?>
     <footer>
         <div class="f-container">

@@ -11,6 +11,36 @@
     <link href="https://fonts.googleapis.com/css2?family=Cambo&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <script src="nav.js" defer></script>
+    <style>
+        .add-issue-validation {
+            display: flex;
+            padding: 20px;
+            background-color: #000E10;
+            border: 1px solid #b2b2b2;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            max-height:30% ;
+            max-width: 50%;
+            margin: 50px auto;
+        }
+        .add-issue-validation .title {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 650px) {
+            .add-issue-validation {
+                max-width: 90%;
+            }
+            .add-issue-validation .title {
+                font-size: 18px;
+            }
+            .add-issue-validation a.btn {
+                max-width: 100%;
+            }
+        }
+    </style>
 </head>
 <body>
     
@@ -45,7 +75,7 @@ $username = $_SESSION['username'];
 if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] == false) {
     header(header:"Location: login.php");
 }
-
+echo '<div class="add-issue-validation">';
 if (empty($_POST['title']) || empty($_POST['content'])) {
     echo "<h1>Title and content cannot be empty.</h1>";
     echo "<a class=btn href='report_issue.php'>Back to report issue</a>";
@@ -82,7 +112,8 @@ if ($stmt3->execute() === TRUE) {
     echo "<a class=btn href='dashboard.php'>Back to dashboard</a>";
 } else{
     echo "Error: " . $stmt3->error ."<br>" . $conn->error;
-}   
+}
+echo '</div>';   
 ?>
     <footer>
         <div class="f-container">

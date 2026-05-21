@@ -10,6 +10,36 @@
     <link href="https://fonts.googleapis.com/css2?family=Cambo&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <script src="nav.js" defer></script>
+    <style>
+        .request-supplies-validation {
+            display: flex;
+            padding: 20px;
+            background-color: #000E10;
+            border: 1px solid #b2b2b2;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            max-height:30% ;
+            max-width: 50%;
+            margin: 50px auto;
+        }
+        .request-supplies-validation .title {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 650px) {
+            .request-supplies-validation {
+                max-width: 90%;
+            }
+            .request-supplies-validation .title {
+                font-size: 18px;
+            }
+            .request-supplies-validation a.btn {
+                max-width: 100%;
+            }
+        }
+    </style>
 </head>
 <body>
     
@@ -38,7 +68,10 @@
     session_start();
     $id=$_SESSION['user_id']; 
     //echo $id;
-
+    echo '<div class="request-supplies-validation">';
+    if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] == false) {
+        header(header:"Location: login.php");
+    }
     $stmt = $conn->prepare("SELECT id,supplies_status , score, last_supply_request FROM users WHERE id = ?");
         $stmt->bind_param("i", $id);
         $stmt->execute();
@@ -52,7 +85,7 @@
             $lasttime = strtotime($latestrequest);
             $weekago = strtotime('-7 days ');
             if ($lasttime >$weekago){
-                echo "<h1> You have already requested supplies this week";
+                echo "<h1> You have already requested supplies this week</h1>";
                 echo "<a class='btn' href='dashboard.php'>Back to dashboard</a>";
                 $score = $score -10;
                 exit();
@@ -123,6 +156,7 @@ default:
     // }else{
     //     echo 'etf';
     // }
+    echo "</div>";
     ?>
     <footer>
         <div class="f-container">

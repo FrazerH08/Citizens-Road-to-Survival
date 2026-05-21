@@ -10,6 +10,36 @@
     <link href="https://fonts.googleapis.com/css2?family=Cambo&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <script src="nav.js" defer></script>
+    <style>
+        .add-article-validation {
+            display: flex;
+            padding: 20px;
+            background-color: #000E10;
+            border: 1px solid #b2b2b2;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            max-height:30% ;
+            max-width: 50%;
+            margin: 50px auto;
+        }
+        .add-article-validation .title {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 650px) {
+            .add-article-validation {
+                max-width: 90%;
+            }
+            .add-article-validation .title {
+                font-size: 18px;
+            }
+            .add-article-validation a.btn {
+                max-width: 100%;
+            }
+        }
+    </style>
 </head>
 <body>
 
@@ -45,7 +75,7 @@ $target_file = $target_dir . basename ($_FILES["fileToUpload"]["name"]);
 $uploadOk = 1;
 $imageFileType =strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 // Below Checks if an  image file is a actual image or fake image.
-
+echo '<div class="add-article-validation">';
 if(isset($_POST['submit'])) {
     $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
     if($check !== false){
@@ -103,6 +133,7 @@ $sql ="INSERT INTO articles (title, description, content , picture , username) V
     } else{
         echo "Error: " . $sql ."<br>" . $conn->error;
     }
+    echo '</div>';
     ?>
         <footer>
         <div class="f-container">

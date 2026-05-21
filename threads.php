@@ -99,15 +99,15 @@ if ($logged_in) {
                 echo '<p><a class=article-title href="retrieve_thread.php?id=' . htmlspecialchars($row['id']) . '">' .  '<b>', htmlspecialchars($row['title']) . '</b>' , '</a></p>';
 
                 if($role == 'admin'){
-                    echo '<p>
-                        <a class =btn href="edit_thread.php?id=' . htmlspecialchars($row['id']) . '">Edit</a> |
-                        <a class=btn onclick="return confirm(\'Do You Really Want To Delete This?\')" href="delete_thread.php?id=' . htmlspecialchars($row['id']) . '">Delete</a>
+                    echo '<p class="edit-delete">
+                        <a class =edit-btn href="edit_thread.php?id=' . htmlspecialchars($row['id']) . '">Edit</a> |
+                        <a class=delete-btn onclick="return confirm(\'Do You Really Want To Delete This?\')" href="delete_thread.php?id=' . htmlspecialchars($row['id']) . '">Delete</a>
                     </p>';
                 }
 
                 echo '<p>Description: ' . htmlspecialchars($row['description']) . '</p>';
                 echo '<p>Created By: ' . htmlspecialchars($row['username']) . '</p>';
-                echo '<p>Article written: ' . htmlspecialchars($row['time_created']) . '</p>';
+                echo '<p>Date: ' . date("F j, Y, g:i a", strtotime($row['time_created'])) . '</p>';
                 echo '</section>';
             }
         } else {

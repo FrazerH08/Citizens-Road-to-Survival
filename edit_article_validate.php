@@ -9,6 +9,37 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cambo&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <script src="nav.js" defer></script>
+    <style>
+        .edit-article-validation {
+            display: flex;
+            padding: 20px;
+            background-color: #000E10;
+            border: 1px solid #b2b2b2;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            max-height:30% ;
+            max-width: 50%;
+            margin: 50px auto;
+        }
+        .edit-article-validation .title {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 650px) {
+            .edit-article-validation {
+                max-width: 90%;
+            }
+            .edit-article-validation .title {
+                font-size: 18px;
+            }
+            .edit-article-validation a.btn {
+                max-width: 100%;
+            }
+        }
+    </style>
 </head>
 <body>
  <header class="header">
@@ -40,6 +71,10 @@ session_start();
 // foreach ($_FILES as $key => $value){
 //     echo($key . ' this is adams debug test');
 //   }
+echo '<div class="edit-article-validation">';
+if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] == false) {
+    header(header:"Location: login.php");
+}
 $target_dir = "uploads/";
 $target_file = $target_dir . basename ($_FILES["fileToUpload"]["name"]);
 $uploadOk = 1;
@@ -100,10 +135,11 @@ $sql ="UPDATE articles SET title='$sanitisedTitle', description='$sanitisedDescr
 <?php
 if ($conn->query(query: $sql) === TRUE) {
     echo "<h1>New record created successfully</h1>";
-    echo "<a class=btn href='list_articles.php'>Back to news</a>";
+    echo "<a class='btn' href='list_articles.php'>Back to news</a>";
 } else{
     echo "Error: " . $sql ."<br>" . $conn->error;
 }
+echo '</div>';
 ?>
 <footer>
         <div class="f-container">
