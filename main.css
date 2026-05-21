@@ -257,6 +257,7 @@ footer {
     font-size: 16px;
     text-align: center;
 }
+
 @media (max-width: 650px) {
     .header {
         position: sticky;
@@ -274,10 +275,15 @@ footer {
     .nav_list {
         flex-direction: column;
         align-items: center;
-        row-gap: 120px;
+        row-gap: 100px;
     }
     .nav_link {
-        font-size: 25px;
+        font-size: 18px;
+    }
+    .nav_link:hover,
+    .nav_link:focus {
+        color: #316E74;
+        text-decoration: underline;
     }
     .hamburger {
         display: block;
@@ -305,5 +311,12 @@ footer {
         text-align: center;
         /* padding: 5px 12px; */
         justify-content: center;
+    }
+    body.menu-open {
+        overflow: hidden;
+    }
+    body.menu-open>*:not(.header) {
+        filter: blur(5px);
+        transition: filter 0.4s ease-in-out;
     }
 }
