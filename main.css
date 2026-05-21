@@ -226,7 +226,8 @@ footer {
     margin-bottom: 20px;
 }
 
-.read-more-btn {
+.read-more-btn,
+.btn {
     text-align: center;
     background-color: #000E10;
     border: 1px solid white;
@@ -239,13 +240,15 @@ footer {
     transition: all 0.4s;
 }
 
-.read-more-btn:hover {
+.read-more-btn:hover,
+.btn:hover {
     background-color: #316E74;
     border: 1px solid #316E74;
     transition: .4s;
 }
 
-.read-more-btn a {
+.read-more-btn a,
+.btn a {
     color: #b2b2b2;
     text-decoration: none;
     font-size: 16px;
@@ -295,7 +298,8 @@ footer {
         width: 100%;
         word-break: break-all;
     }
-    .read-more-btn {
+    .read-more-btn,
+    .btn {
         text-align: center;
         /* padding: 5px 12px; */
         justify-content: center;

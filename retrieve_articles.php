@@ -79,7 +79,7 @@ $stmt->close();
 $conn->close();
 ?>
     <div class="read-more-btn-container">
-        <a class="read-more-btn" style="text-align: center;" href="list_articles.php">Read More</a>
+        <a class="read-more-btn" style="text-align: center;" href="list_articles.php">Read More Articles</a>
     </div>
     <footer>
         <div class="f-container">

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Review score </title>
     <link rel="stylesheet" href="main.css">
-    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="review_score.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cambo&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
@@ -55,12 +55,12 @@ if($role!='admin' || $logged_in == false) {
     // Display scores
     if (!empty($scores)) {
         foreach ($scores as $row) {
-            echo '<section class="newsCard">';
-            echo '<h2> id: '  . htmlspecialchars($row['id']).'</h2>';
-            echo '<h2> Username: '  . htmlspecialchars($row['username']).'</h2>';
-            echo '<h2>Score: ' . htmlspecialchars($row['score']) . '</h2>';
+            echo '<section class="scoreCard">';
+            echo '<div> <h2> id: '  . htmlspecialchars($row['id']).' </h2></div>';
+            echo '<div> <h2> Username: '  . htmlspecialchars($row['username']).'</h2></div>';
+            echo '<div> <h2> Score: ' . htmlspecialchars($row['score']) . '</h2></div>';
             echo '<p>
-                    <a class=btn onclick="return confirm(\'Do You Really Want To Edit This?\')"href="edit_score.php?id=' . htmlspecialchars($row['id']) . '">Edit</a>
+                    <a class="btn" onclick="return confirm(\'Do You Really Want To Edit This?\')" href="edit_score.php?id=' . htmlspecialchars($row['id']) . '">Edit</a>
             </p>';
             echo '<br>' .'<br>';
             echo '</section>';

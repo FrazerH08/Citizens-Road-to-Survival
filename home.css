@@ -6,6 +6,13 @@
 .container img {
     width: 70%;
     height: auto;
+    transition: all 0.4s;
+    border: 1px solid white;
+}
+
+.container img:hover {
+    transform: scale(1.05);
+    transition-duration: .4s;
 }
 
 .big-article-title {
