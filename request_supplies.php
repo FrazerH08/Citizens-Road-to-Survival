@@ -88,6 +88,12 @@
                 echo "<h1> You have already requested supplies this week</h1>";
                 echo "<a class='btn' href='dashboard.php'>Back to dashboard</a>";
                 $score = $score -10;
+                $sql ="UPDATE users SET score='$score'  WHERE id = $id";
+                if ($conn->query(query: $sql) === TRUE) {
+                    echo " <p style='display: none'>Score updated successfully</p>";
+                } else {
+                    echo " <p style='display: none;'>Error updating score: " . $conn->error . "</p>";
+                }
                 exit();
              }
         }
