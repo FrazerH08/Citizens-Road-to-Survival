@@ -1,58 +1,71 @@
+<?php
+include 'connectdb.php';
+// $logged_in = $_SESSION['logged_in'];
+session_start();  
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Validate</title>
-    <link rel="stylesheet" href="list_news.css">
+    <title>Local Forums</title>
     <link rel="stylesheet" href="main.css">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="home.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cambo&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <script src="nav.js" defer></script>
     <style>
-        .login-validation {
-            display: flex;
+        .local-forum-container {
+            max-width: 800px;
+            margin: 50px auto;
             padding: 20px;
             background-color: #000E10;
             border: 1px solid #b2b2b2;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            max-height:30% ;
-            max-width: 50%;
-            margin: 50px auto;
+            border-radius: 8px;
+            text-align: center;
         }
-        .login-validation .title {
-            font-size: 24px;
+
+        .forum-title {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .forum-description {
+            font-size: 18px;
             margin-bottom: 20px;
         }
 
         @media (max-width: 650px) {
-            .login-validation {
+            .local-forum-container {
                 max-width: 90%;
+                padding: 15px;
             }
-            .login-validation .title {
-                font-size: 18px;
+            .forum-title {
+                font-size: 24px;
             }
-            .login-validation a.btn {
-                max-width: 100%;
+            .forum-description {
+                font-size: 16px;
             }
         }
     </style>
 </head>
+
 <body>
-    
+
     <header class="header">
         <div class="header_content">
             <a href="index.php" class="logo">Citizens' Road to&nbsp;<b>Survival</b></a>
             <nav class="nav">
                 <ul class="nav_list">
-
                     <li class="nav_item"> <a href="list_articles.php" class="nav_link">News</a></li>
                     <li class="nav_item"> <a href="dashboard.php" class="nav_link">Dashboard</a></li>
-                    <li class="nav_item"> <a href="login.php" class="nav_link">Login</a></li>
+                    <li class="nav_item" id="login"> <a href="login.php" class="nav_link">Login</a></li>
                     <li class="nav_item"> <a href="signup.php" class="nav_link">Sign up</a></li>
                     <li class="nav_item"> <a href="feedback.php" class="nav_link">Feedback</a></li>
                 </ul>
@@ -64,50 +77,18 @@
             </div>
         </div>
     </header>
-    <?php
-    include 'connectdb.php';
-    session_start();
-    if(isset($_POST['submit'])){
-    $username = mysqli_real_escape_string($conn, $_POST['username']);
-    $password = $_POST['password'];
 
-    // Use prepared statement
-    $stmt = $conn->prepare("SELECT * FROM users WHERE username = ?");
-    $stmt->bind_param("s", $username);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    $user = $result->fetch_assoc();
-    echo '<div class="login-validation">';
-    // Add debugging
-    // echo "Debug - User found: ";
-    // var_dump($user);
-    // echo "<br>";
-
-    // Check password using existing method from signup (hashed password)
-    if($user && password_verify($password, $user['password'])){
-        // Regenerate session ID for security
-        session_regenerate_id(true);
-
-        // Store username , id and role, score , shelter location in session
-        $_SESSION['user_id'] =$user['id'];
-        $_SESSION['username'] = $user['username'];
-        $_SESSION['role'] = $user['role'];
-        $_SESSION['logged_in']= true;
-        $_SESSION['score'] =$user['score'];
-        $_SESSION['shelter_location'] =$user['shelter_location'];
-
-        // Add debugging
-        // echo "Debug - Session username set: " . $_SESSION['username'];
-
-        header("Location: dashboard.php");
-        exit();
-    } else {
-        echo "<h1 class='title'>Invalid username or password</h1>";
-        echo "<a class='btn' text-align:center href='javascript:self.history.back()'> Go Back</a>";
-    }
-}
-echo '</div>';
+    <div class="local-forum-container">
+        <h1 class="forum-title">Local Forums</h1>
+        <p class="forum-description">Engage with your local community, share survival tips, and discuss strategies for thriving in our challenging world.</p>
+        <?php
+        // Fetch forums from the database
+        $local_shelter_location = $_SESSION['shelter_location'];
+        $username = $_SESSION['username'];
+    
+        echo $username . ' sorry, there are no local forums available for ' . $local_shelter_location . '.';
         ?>
+    </div>
     <footer>
         <div class="f-container">
             <div class="footer-content">
@@ -135,9 +116,8 @@ echo '</div>';
             <p>This is a fictional student website.</p>
         </div>
     </footer>
-</body>
-</html>
-<script>
-    console.log("Validation script has ran")
 
-</script>
+
+</body>
+
+</html>
