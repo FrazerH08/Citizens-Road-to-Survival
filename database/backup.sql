@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: May 14, 2026 at 03:45 PM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- Host: localhost
+-- Generation Time: May 17, 2026 at 11:26 PM
+-- Server version: 10.4.17-MariaDB
+-- PHP Version: 7.2.34
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `citizens_road_to_survival`
+-- Database: `cl27-frazerh`
 --
 
 -- --------------------------------------------------------
@@ -36,7 +36,7 @@ CREATE TABLE `articles` (
   `username` text NOT NULL,
   `time_created` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `comments` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `articles`
@@ -45,7 +45,8 @@ CREATE TABLE `articles` (
 INSERT INTO `articles` (`id`, `title`, `description`, `picture`, `content`, `username`, `time_created`, `comments`) VALUES
 (33, 'How FM26 is So Great', 'An Article on why Football Manager is so good ', 0x75706c6f6164732f464d32362e77656270, 'Football Manager continues to stay busy they&#039;re plenty of discussion across the community about updates, gameplay changes, and what fans want to see next. Recent patches have focused mainly on improving match realism,\r\n\r\nOne of the biggest talking points has been the match engine, with many players enjoying it because it is fresh and new , something different to previous editions.While it&rsquo;s not perfect, most fans agree that the game now feels more realistic.\r\n\r\nOne Negative is the fans are angry about the UI overall and miss the old FM24 style , its like marmite people either love or hate it. \r\n\r\nthe FM community remains as active as ever. From custom databases and face packs to tactical guides on YouTube, players are still finding new ways to keep the game fresh. \r\n\r\nOverall, Football Manager is in a solid place right now. While there are still improvements to be made, the ongoing updates and strong community support show why the series continues to be one of the most popular football simulation games out there.', '', '2026-02-10 20:43:07', ''),
 (36, 'Latest FM NEWS ', 'February', 0x75706c6f6164732f44616e6e792d526f73652e6a7067, 'That this a is a test ', '', '2026-02-16 17:03:07', ''),
-(37, 'Test', 'This is a test ', 0x75706c6f6164732f53637265656e73686f7420323032362d30312d3330203130313430392e706e67, 'Hello this is dystopian ', 'FrazerGTFC', '2026-05-08 09:52:40', '');
+(37, 'Test', 'This is a test ', 0x75706c6f6164732f53637265656e73686f7420323032362d30312d3330203130313430392e706e67, 'Hello this is dystopian ', 'FrazerGTFC', '2026-05-08 09:52:40', ''),
+(38, 'Test 2 ', 'BL;AH', 0x75706c6f6164732f4a757374696e20416d616c757a6f722e77656270, 'BOOOOSG', 'FrazerGTFC', '2026-05-17 20:45:39', '');
 
 -- --------------------------------------------------------
 
@@ -61,7 +62,7 @@ CREATE TABLE `feedback` (
   `email` text NOT NULL,
   `subject` text NOT NULL,
   `date_written` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `feedback`
@@ -77,7 +78,9 @@ INSERT INTO `feedback` (`id`, `firstname`, `lastname`, `username`, `email`, `sub
 (7, 'Frazee', 'Harbess', 'FrazerGTFC', 'test@gmail.com', 'This website is awful ', '2025-05-23 12:23:57'),
 (8, 'Greg', 'Richard', 'thegreatone', 'greg@fishandchips.co.uk', 'This website design is cool ', '2026-02-09 14:57:48'),
 (9, 'Greg', 'Richard', 'thegreatone', 'greg@fishandchips.co.uk', 'This website design is cool ', '2026-02-09 15:19:34'),
-(10, 'Greg', 'Richard', 'FrazerGTFC', 'greg@fishandchips.co.uk', 'Website is unreal', '2026-02-16 17:07:55');
+(10, 'Greg', 'Richard', 'FrazerGTFC', 'greg@fishandchips.co.uk', 'Website is unreal', '2026-02-16 17:07:55'),
+(11, 'Frazer', 'Harness', 'Enrol123', 'frazergtfc9@outlook.com', 'This website is crap', '2026-05-14 20:38:04'),
+(12, 'Harry', 'Barker', 'haroldluvschads', 'harold123@parry.com', 'I think this website is woeful get some front end done ', '2026-05-15 14:28:46');
 
 -- --------------------------------------------------------
 
@@ -90,8 +93,17 @@ CREATE TABLE `issues` (
   `title` text NOT NULL,
   `content` text NOT NULL,
   `username` text NOT NULL,
-  `time_created` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `time_created` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `issues`
+--
+
+INSERT INTO `issues` (`id`, `title`, `content`, `username`, `time_created`) VALUES
+(1, 'THERE IS NO TIOLET ROLL', 'IVE HAD EENOUGH FIX THE CLIMATE AND GIVE ME MY TOILET ROLLS', 'haroldluvschads', '0000-00-00 00:00:00'),
+(2, 'THERE IS NO TIOLET ROLL P2 ', 'IVE HAD EENOUGH FIX THE CLIMATE AND GIVE ME MY TOILET ROLLS', 'haroldluvschads', '2026-05-14 18:16:09'),
+(3, 'Text colour ', 'I cant see the colour properly ', 'haroldluvschads', '2026-05-15 08:14:07');
 
 -- --------------------------------------------------------
 
@@ -108,7 +120,7 @@ CREATE TABLE `local_threads` (
   `time_created` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `comments` text NOT NULL,
   `location` enum('East Riding','Birminghams','','') NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `local_threads`
@@ -129,7 +141,7 @@ CREATE TABLE `local_thread_replies` (
   `thread_id` int(11) NOT NULL,
   `text` text NOT NULL,
   `date_created` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -143,7 +155,7 @@ CREATE TABLE `questions` (
   `option1` text NOT NULL,
   `option2` text NOT NULL,
   `option3` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -156,7 +168,7 @@ CREATE TABLE `quizzes` (
   `title` text NOT NULL,
   `description` text NOT NULL,
   `time_created` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -168,7 +180,7 @@ CREATE TABLE `quiz_questions` (
   `id` int(11) NOT NULL,
   `quizzes_id` int(11) NOT NULL,
   `question_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -180,7 +192,7 @@ CREATE TABLE `responses` (
   `responses_id` int(11) NOT NULL,
   `answer_selected` text NOT NULL,
   `is_correct` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -195,7 +207,7 @@ CREATE TABLE `threads` (
   `content` text NOT NULL,
   `username` text NOT NULL,
   `time_created` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `threads`
@@ -204,7 +216,7 @@ CREATE TABLE `threads` (
 INSERT INTO `threads` (`id`, `title`, `description`, `content`, `username`, `time_created`) VALUES
 (1, 'supplies', 'fefdf', 'Where is my supplies ', 'FrazerGTFC', '0000-00-00 00:00:00'),
 (2, 'supplies 3 ', 'fefdf', 'Where is my supplies NOW', 'FrazerGTFC', '2026-05-08 13:24:13'),
-(3, 'Frazers love life ', 'He lives in a tiny mouldy flat above a shuttered betting shop.', 'He lives in a tiny mouldy flat above a shuttered betting shop, where the radiator only works if he kicks it hard enough and the wallpaper peels like dead skin. Every evening is the same: greasy takeaway burgers stacked beside his monitor, cola bottles on the floor, and twelve straight hours of Football Manager while rain leaks through the cracked window.\r\n\r\nHe keeps telling himself this save will change his life.\r\n\r\nIt never does.\r\n\r\nAt work nobody really talks to him unless they need something moved. He spends lunch breaks scrolling dating apps with zero matches except obvious bots. Every attempt at flirting dies instantly &mdash; awkward messages, unread replies, women slowly backing away after one conversation about his fourth-division Croatian wonderkid.\r\n\r\nHis friends stopped inviting him out years ago because he always says no to &ldquo;save money,&rdquo; then spends &pound;40 on burgers and in-game editor tools.\r\n\r\nSometimes at 2AM, after another lost playoff final, he stares at the glowing monitor and imagines what having a girlfriend would even feel like. Someone sitting beside him. Someone laughing. Someone asking how his day was.\r\n\r\nInstead, the only voice in the room is the commentator from Football Manager and the buzz of a dying fridge.\r\n\r\nBy age thirty-five, he knows every wonderkid in Europe but has never been in love. The delivery drivers know his name better than any woman ever has.\r\n\r\nThe saddest part is that he&rsquo;s stopped believing things could change.', 'FrazerGTFC', '2026-05-08 14:07:44');
+(4, 'Website', 'This website is clammy ', 'This website is clammy ', 'haroldluvschads', '2026-05-15 14:30:54');
 
 -- --------------------------------------------------------
 
@@ -218,17 +230,19 @@ CREATE TABLE `threads_replies` (
   `thread_id` int(11) NOT NULL,
   `text` text NOT NULL,
   `date_created` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `threads_replies`
 --
 
 INSERT INTO `threads_replies` (`id`, `user_id`, `thread_id`, `text`, `date_created`) VALUES
-(1, 12, 3, 'dont worry frazer!!!!i have a feeling on october the 17th that you will get a gf just dont let the dystopian corrupt government get to you aka the jews ', '2026-05-08 14:36:20'),
 (3, 12, 3, 'unlucky you melt ', '2026-05-08 14:47:46'),
 (4, 12, 2, 'Its in your garden', '2026-05-09 21:57:27'),
-(5, 12, 2, 'Nevermind its at your door', '2026-05-09 21:58:29');
+(5, 12, 2, 'Nevermind its at your door', '2026-05-09 21:58:29'),
+(7, 12, 3, 'h', '2026-05-15 14:33:41'),
+(8, 12, 3, 'hh', '2026-05-15 14:33:43'),
+(9, 12, 3, 'hh', '2026-05-15 14:33:44');
 
 -- --------------------------------------------------------
 
@@ -250,7 +264,7 @@ CREATE TABLE `users` (
   `shelter_location` enum('Bedfordshire','Berkshire','Bristol','Buckinghamshire','Cambridgeshire','Cheshire','Cornwall','Cumbria','Derbyshire','Devon','Dorset','Durham','East Riding of Yorkshire','East Sussex','Essex','Gloucestershire','Greater London','Greater Manchester','Hampshire','Herefordshire','Hertfordshire','Isle of Wight','Kent','Lancashire','Leicestershire','Lincolnshire','Merseyside','Middlesex','Norfolk','North Yorkshire','Northamptonshire','Northumberland','Nottinghamshire','Oxfordshire','Rutland','Shropshire','Somerset','South Yorkshire','Staffordshire','Suffolk','Surrey','Tyne and Wear','Warwickshire','West Midlands','West Sussex','West Yorkshire','Wiltshire','Worcestershire') DEFAULT NULL,
   `weekly_reported_issues` int(11) NOT NULL,
   `last_supply_request` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `users`
@@ -258,16 +272,16 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `username`, `password`, `firstname`, `lastname`, `email`, `birthdate`, `role`, `score`, `supplies_status`, `shelter_location`, `weekly_reported_issues`, `last_supply_request`) VALUES
 (1, 'FrazerGTFC', '$2y$10$EwvAmv/0GzWsB86V5ffUTecwJp3ehOCYM8nCSIJenXjPcBDaOHfMO', 'Frazer   ', 'Harness   ', 'frazergtfc9@outlook.com', '2008-06-07', 'admin', 50, 'Medium', '', 0, NULL),
-(3, 'EuanParry123', '$2y$10$n3SxG/5GD1EkA0xw.KanxeMMBZBDL6aYifWk6X/IH1GGTDLWk9jdG', 'Euan      ', 'Pazza      ', 'euan@gmail.com', '2020-01-07', 'user', 65, '', '', 0, NULL),
-(4, 'harold1234', '$2y$10$76PrL2sPvomrdLcM4ROCY.O4Hvp7pHd38QS/gTZlFJOn63q77fBNe', 'harry', 'barker', 'HAROLd123@gmail.com', '2007-08-13', 'user', 0, '', '', 0, NULL),
+(3, 'EuanParry123', '$2y$10$n3SxG/5GD1EkA0xw.KanxeMMBZBDL6aYifWk6X/IH1GGTDLWk9jdG', 'Euan      ', 'Pazza      ', 'euan@gmail.com', '2020-01-07', 'user', 67, '', '', 0, NULL),
+(4, 'harold1234', '$2y$10$76PrL2sPvomrdLcM4ROCY.O4Hvp7pHd38QS/gTZlFJOn63q77fBNe', 'harry', 'barker', 'HAROLd123@gmail.com', '2007-08-13', 'user', 67, '', '', 0, NULL),
 (5, 'thegreatone', '$2y$10$qs0Df8w2wAwTVdXJ8Ceg7ek/s8qM0Wjb5/hv62.pVzMq1wxeh.F1O', 'euan ', 'glyn', 'euanismydadd@yahoo.com', '12121-02-12', 'admin', 0, '', '', 0, NULL),
-(6, 'Enrol123', '$2y$10$4kxZa1hwdH5QR3STzJUYRu5N1nMIOmBmjF7iyH.bcUFxHdEuFdqdK', 'Euan ', 'Parry ', 'Egrparry28@gmail.com', '2007-09-28', 'user', 18, 'High', '', 0, '2026-05-13 22:41:59'),
+(6, 'Enrol123', '$2y$10$4kxZa1hwdH5QR3STzJUYRu5N1nMIOmBmjF7iyH.bcUFxHdEuFdqdK', 'Euan ', 'Parry ', 'Egrparry28@gmail.com', '2007-09-28', 'user', 67, 'High', '', 0, '2026-05-13 22:41:59'),
 (7, 'EuanSmells', '$2y$10$xzFzSyqM/cOxiOuSxMrHfeWtFr0MiNUFRARMMhWAOfAIX/gtJzMBW', 'Alex', 'Parry', 'alexparry@gmail.com', '2004-03-28', 'user', 0, '', '', 0, NULL),
 (8, 'MrTest123', '$2y$10$gsruPByhpzqk48vrhwEd9.K7Ww3YiSbVe9cIyEIcLf2O6Ll1gJto2', 'Test ', 'Testing ', 'test@gmail.com', '2003-02-03', 'user', 0, '', '', 0, NULL),
 (9, 'Euan123', '$2y$10$mUbp3WPvQsZkHFVzMiGgo.0066L0lJFvCfQoPzhEx9zO9g2jTDdDS', 'Euan ', 'Parry', 'Enrol123@gmail.com', '2007-09-28', 'user', 0, '', '', 0, NULL),
 (10, 'ITKNEWS', '$2y$10$bNVzP3rShm/7lx30jHTjgunHDntXFlk6MTVq9K0jcHl13ZsGnXlKq', 'Mr', 'Reliable', 'reliablenews@yahoo.com', '1878-02-03', 'user', 0, '', '', 0, NULL),
 (11, 'TheBatter', '$2y$10$Z1R2FPx.nZ8YqOxVCHcPseUR9cB7BiAAQXGQYNnuHLTdlWsPaXtyK', 'Greg', 'Richard', 'greg@fishandchips.co.uk', '1998-09-16', 'user', 0, '', '', 0, NULL),
-(12, 'haroldluvschads', '$2y$10$pkBIgqs9JoEHMEk3p5kPFOlUFoykeVxdCmQIe3W4lNWW4rS9E994O', 'Harold', 'barker', 'harold123@parry.com', '2007-08-13', 'user', 57, 'High', 'Buckinghamshire', 0, NULL),
+(12, 'haroldluvschads', '$2y$10$pkBIgqs9JoEHMEk3p5kPFOlUFoykeVxdCmQIe3W4lNWW4rS9E994O', 'Harold', 'barker', 'harold123@parry.com', '2007-08-13', 'user', 52, 'High', 'Surrey', 2, NULL),
 (14, 'Freddy098', '$2y$10$qsEbUlqCUI.MoblCVW9gd.s90ahDdXZxhx0ShpvgJ//lQimulphSK', 'Fred', 'Karen', 'fredkaren@gmail.com', '2015-05-12', 'user', 0, '', '', 0, NULL),
 (15, 'garyluvschads', '$2y$10$61aRUfPLu1IzhSRkIuOm9.Poi/QPGh9sGv4qyC9wFQTQq.mC8Y4IG', 'Gary', 'Barlow', 'garryid@hotmail.com', '2013-02-14', 'user', 30, 'High', '', 0, NULL),
 (16, 'BARRY009', '$2y$10$oopIoe7zuImlKdkkbk0RI.tffYnM8FBo0bNK9LvKdEQI.acCtLbyS', 'Gary', 'Barry', 'Barry@hotmail.com', '2013-02-14', 'user', 50, 'Medium', '', 0, NULL),
@@ -286,7 +300,7 @@ CREATE TABLE `user_responses` (
   `question_id` int(11) NOT NULL,
   `response_id` int(11) NOT NULL,
   `time_completed` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Indexes for dumped tables
@@ -380,19 +394,19 @@ ALTER TABLE `user_responses`
 -- AUTO_INCREMENT for table `articles`
 --
 ALTER TABLE `articles`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT for table `feedback`
 --
 ALTER TABLE `feedback`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `issues`
 --
 ALTER TABLE `issues`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `local_threads`
@@ -434,13 +448,13 @@ ALTER TABLE `responses`
 -- AUTO_INCREMENT for table `threads`
 --
 ALTER TABLE `threads`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `threads_replies`
 --
 ALTER TABLE `threads_replies`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `users`
