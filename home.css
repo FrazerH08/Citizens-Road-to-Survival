@@ -50,4 +50,8 @@
         /* padding: 5px 12px; */
         justify-content: center;
     }
+    .opening-message {
+        margin-right: 20px;
+        margin-left: 20px;
+    }
 }
