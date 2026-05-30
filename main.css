@@ -258,8 +258,18 @@ footer {
     text-align: center;
 }
 
-form {
+form,
+form label,
+form:placeholder,
+form input,
+form textarea,
+form input[type="text"],
+input {
     font-family: "Montserrat", sans-serif;
+}
+
+.user-n-f {
+    color: #7A7A7A;
 }
 
 @media (max-width: 650px) {

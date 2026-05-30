@@ -49,7 +49,7 @@
     <input type="text" id="email" name="email" placeholder="Your email..">
 
     <label class="labels" for="subject">Subject:</label>
-    <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+    <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px; font-family: 'Montserrat', sans-serif;"></textarea>
 
     <input type="submit" value="Submit">
   </form>

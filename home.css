@@ -8,6 +8,7 @@
     height: auto;
     transition: all 0.4s;
     border: 1px solid white;
+    /* object-fit: cover; */
 }
 
 .container img:hover {

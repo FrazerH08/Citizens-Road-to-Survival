@@ -1,3 +1,14 @@
+<?php
+session_start();
+include 'connectdb.php';
+if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
+    header("Location: dashboard.php");
+    exit;
+}
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -90,7 +101,7 @@
         }
         if(isset($_SESSION['valid'])){
             echo "You are logged in! Welcome back {$username}";
-            header("Location: welcome.php");
+            header("Location: dashboard.php");
         }
     }else{
     }

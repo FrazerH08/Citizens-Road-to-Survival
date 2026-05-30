@@ -106,8 +106,13 @@ if($role === 'admin'){
                 }
 
                 // echo '<p>Description: ' . htmlspecialchars($row['description']) . '</p>';
-                echo '<p>Created By: ' . htmlspecialchars($row['username']) . '</p>';
-                echo "<p>". date("F j, Y, g:i a", strtotime($row['time_created'])) . "</p>";
+                if (htmlspecialchars($row['username']) == null) {
+                    echo '<p>Created By: <a class="user-n-f"> 404: User Not Found</a></p>';
+                } else {
+                    echo '<p>Created By: ' . htmlspecialchars($row['username']) . '</p>';
+                    }
+                    echo "<p>". date("F j, Y, g:i a", strtotime($row['time_created'])) . "</p>";
+                
                 // echo '<p>Article written: ' . htmlspecialchars($row['time_created']) . '</p>';
                 echo '</section>';
             }

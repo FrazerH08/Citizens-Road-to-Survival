@@ -64,8 +64,11 @@ if($result->num_rows > 0) {
                 echo "<img src='data:image/jpeg;base64," . base64_encode($row['picture']) . "' alt='Post Image'>";
             }
         }
-        echo '<h2> Created By: ' . html_entity_decode($row['username']) . "</h2>";
-        // echo '<section class="postCard2">';
+                if (htmlspecialchars($row['username']) == null) {
+                    echo '<h2>Created By: <a class="user-n-f"> 404: User Not Found</a></h2>';
+                } else {
+                    echo '<h2>Created By: ' . htmlspecialchars($row['username']) . '</h2>';
+                    }
         echo "<p>". date("F j, Y, g:i a", strtotime($row['time_created'])) . "</p>";
         echo "<h3>" . html_entity_decode($row['description']) . "</h3>";
         echo "<p>" . html_entity_decode($row['content']) . "</p>";
