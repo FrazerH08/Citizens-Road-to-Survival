@@ -3,5 +3,6 @@
         "firstname",
         "lastname",
         "sname"
-    ]
+    ],
+    "editor.defaultFormatter": "HookyQR.beautify"
 }

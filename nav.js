@@ -18,5 +18,5 @@ navEl.addEventListener('click', () => {
 
 // myPara.innerHTML="<a 'class=nav_item' href=logout.php >Logout</a>";
 
-document.getElementById("login").href = "logout.php";
-document.getElementById("login").a = "Logout";
+// document.getElementById("login").href = "logout.php";
+// document.getElementById("login").a = "Logout";

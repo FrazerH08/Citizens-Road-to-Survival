@@ -76,13 +76,18 @@ case "Very Low":
 echo "<div class='status-box' style='background-color: #E42A2A; color: white;'>Supplies Status: Very Low</div>";
     break;
 default:
-    echo "Your favorite color is neither red, blue, nor green!";
+    echo "<div class='status-box' style='background-color: #e2952b; color:white;'> Supplies Status: Not set</div>";
+    break;
     }
     // echo '<h2>Supplies Status: ' . htmlspecialchars($row['supplies_status']) . '</h2>';
     echo '<h2 ><a class="dash-btn" href="request_supplies.php" >Request More </a></h2>';
     echo '</div>';
     echo '<div class="content">';
-    echo '<h2>Shelter Location: ' . htmlspecialchars($row['shelter_location']) . '</h2>';
+    if ($row['shelter_location'] == NULL){
+     echo '<h2> Shelter Location: <a class="user-n-f"> 404: Location Not found'. '</h2>';
+    } else{
+        echo '<h2>Shelter Location: ' . htmlspecialchars($row['shelter_location']) . '</h2>';
+    }
     echo '<h2><a class="dash-btn" href="request_shelter_change.php" >Request shelter change </a></h2>';
     echo '<h2><a class="dash-btn" href="local_forums.php" >View local forums</a></h2>';
     echo '<h2><a class="dash-btn" href="threads.php" >View National Threads</a></h2>';
@@ -124,7 +129,7 @@ case "Very Low":
 echo "<div class='status-box' style='background-color: #E42A2A; color: white;'>Supplies Status: Very Low</div>";
     break;
 default:
-    echo "Your favorite color is neither red, blue, nor green!";
+     echo "<div class='status-box' style='background-color: #e2952b; color:white;'> Supplies Status: Not set</div>";
     }
     // echo '<h2>Supplies Status: ' . htmlspecialchars($row['supplies_status']) . '</h2>';
     echo '<h2 ><a class="dash-btn" href="request_supplies.php" >Request More </a></h2>';
@@ -136,7 +141,11 @@ default:
     echo '<br>' .'<br>' .'<br>';
     echo '</div>';
     echo '<div class="footer">';
-    echo '<h2>Shelter Location: ' . htmlspecialchars($row['shelter_location']) . '</h2>';
+       if ($row['shelter_location'] == NULL){
+     echo '<h2> Shelter Location: <a class="user-n-f"> 404: Location Not found'. '</h2>';
+    } else{
+        echo '<h2>Shelter Location: ' . htmlspecialchars($row['shelter_location']) . '</h2>';
+    }
     echo '<h2><a class="dash-btn" href="request_shelter_change.php" >Change shelter location </a></h2>';
     echo '<h2><a class="dash-btn" href="update_shelter_status.php" >Update shelter status </a></h2>';
     echo '<h2><a class="dash-btn" href="threads.php" >Threads </a></h2>';

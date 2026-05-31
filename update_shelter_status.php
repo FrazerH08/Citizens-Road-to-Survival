@@ -79,15 +79,9 @@ session_start();
     </header>
 
     <div class="local-forum-container">
-        <h1 class="forum-title">Local Forums</h1>
-        <p class="forum-description">Engage with your local community, share survival tips, and discuss strategies for thriving in our challenging world.</p>
-        <?php
-        // Fetch forums from the database
-        $local_shelter_location = $_SESSION['shelter_location'];
-        $username = $_SESSION['username'];
-    
-        echo $username . ' sorry, there are no local forums available for <b>' . $local_shelter_location . '</b>.';
-        ?>
+        <h1 class="forum-title">Update Shelter Status</h1>
+        <p class="forum-description">Unfortunately the feature is unavailable at the moment.</p>
+        <a href="dashboard.php" class="btn"> Return to dashboard </a>
     </div>
     <footer>
         <div class="f-container">
