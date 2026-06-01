@@ -4,10 +4,11 @@
 }
 
 .container img {
-    width: 70%;
-    height: auto;
+    width: 700PX;
+    height: 400px;
     transition: all 0.4s;
     border: 1px solid white;
+    object-fit: cover;
     /* object-fit: cover; */
 }
 
