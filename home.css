@@ -13,7 +13,7 @@
 }
 
 .container img:hover {
-    transform: scale(1.05);
+    transform: scale(1.04);
     transition-duration: .4s;
 }
 
@@ -51,6 +51,7 @@
         text-align: center;
         /* padding: 5px 12px; */
         justify-content: center;
+        margin-bottom: 50px;
     }
     .opening-message {
         margin-right: 20px;

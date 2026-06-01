@@ -90,7 +90,7 @@ $stmt = $conn->prepare("SELECT * FROM articles ORDER BY time_created DESC");
         <div> <a class="btn" href="listguides.php">Guides</a></div>
     </div> -->
     <div class="read-more-btn-container">
-        <a class="read-more-btn" style="text-align: center;" href="list_articles.php">Read More</a>
+        <a class="read-more-btn" style="text-align: center; margin-bottom:100px;" href="list_articles.php">Read More</a>
     </div>
     <footer>
         <div class="f-container">

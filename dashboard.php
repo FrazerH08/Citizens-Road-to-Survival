@@ -45,7 +45,7 @@ if($logged_in == false) {
     header("Location: login.php");
 }
 echo '<div class="logout-btn">';
-echo '<a href="logout.php" class="btn">Logout</a>';
+echo '<a href="logout.php" onclick="return confirm(\' Are you sure you want to logout?\')" class="btn">Logout</a>';
 echo '</div>';
 if($role !='admin' ){
     echo '<section class="dashboard">';

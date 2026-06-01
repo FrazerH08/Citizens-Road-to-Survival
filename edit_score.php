@@ -55,6 +55,7 @@
     if($result->num_rows == 0) {
         echo "No User Found!";
     }else{
+        $usr_id =html_entity_decode($row['id']);
         $users_role =  html_entity_decode($row['role']);
         $score =  html_entity_decode($row['score']);
         $fname =  html_entity_decode($row['firstname']);
@@ -77,7 +78,8 @@
 ?>
 <h1 style="text-align: center;"><u>Edit Score </u></h1>
 <form action="edit_score_validate.php" method="post" enctype="multipart/form-data">
-        <input type="hidden" name="id" value="<?php echo $id;?>">
+        <input type="hidden" name="id" value="<?php echo $id; ?>">
+        <label for ="id"> ID: <?php echo $usr_id; ?></label>
         <label for="title">Name: <?php echo $fname . " " . $sname; ?> </label><br>
         <label for="score"> Score: <?php echo $score ?></label>
         <input type="number" placeholder="Enter new score" id="score" name="score" min="1" max="100" required><br>
