@@ -44,9 +44,21 @@ $logged_in = $_SESSION['logged_in'];
 if($logged_in == false) {
     header("Location: login.php");
 }
-echo '<div class="logout-btn">';
-echo '<a href="logout.php" onclick="return confirm(\' Are you sure you want to logout?\')" class="btn">Logout</a>';
-echo '</div>';
+?>
+<div class="logout-btn" >
+    <a id="open" class="btn" onclick= return confirm  >Logout</a>
+</div>
+<div class="modal-container" id="modal-container">
+    <div class="modal">
+        <h2>Are you sure you want to logout?</h2>
+        <div class="modal-buttons">
+            <a href="logout.php" class="btn confirm-btn">Yes</a>
+            <a id="close" class="btn">No</a>
+            <!-- <button class="close-btn" id="close">&times;</button> -->
+        </div>
+    </div>
+</div>
+<?php
 if($role !='admin' ){
     echo '<section class="dashboard">';
     $stmt= $conn->prepare ("SELECT * FROM users WHERE id= ?");
@@ -184,4 +196,17 @@ default:
         </div>
     </footer>
 </body>
+<script>
+    const open = document.getElementById('open');
+    const modal_container = document.getElementById('modal-container');
+    const close = document.getElementById('close');
+
+    open.addEventListener('click', () => {
+        modal_container.classList.add('show');
+    });
+
+    close.addEventListener('click', () => {
+        modal_container.classList.remove('show');
+    });
+</script>
 </html>
