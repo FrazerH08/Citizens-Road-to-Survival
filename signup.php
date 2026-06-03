@@ -42,7 +42,7 @@
             <div class="form-box signup">
                 <div class="logreg-title">
                     <h2 class="title">Create your account</h2>
-                    <p> if you want to survive. </p>
+                    <p style=" color: #7A7A7A "> if you want to survive. </p>
                 </div>
         <form class="login-form" action="account_validation.php" method='POST'>
                 <div class="input-box">
