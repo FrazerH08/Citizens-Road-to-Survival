@@ -23,6 +23,7 @@
             max-height:30% ;
             max-width: 50%;
             margin: 50px auto;
+            margin-bottom: 100px;
         }
         .login-validation .title {
             font-size: 24px;
@@ -98,9 +99,12 @@
 
         // Add debugging
         // echo "Debug - Session username set: " . $_SESSION['username'];
-
-        header("Location: dashboard.php");
-        exit();
+        echo "<h1 class='title'>Login successful! Welcome, " . htmlspecialchars($_SESSION['username']) . ".</h1>";
+        echo "<p style='text-align: center; color: #7A7A7A; font-size:20px;' >  Your experience is being <b>monitored</b>. </p> ";
+        echo "<p style='text-align: center; font-size:20px;' >Your choices will impact your score , so <b>comply</b> to our rules .</p>";
+        echo "<a class='btn' text-align:center href='dashboard.php'> Go to Dashboard</a>";
+        header("refresh:7;url=dashboard.php");
+        // exit();
     } else {
         echo "<h1 class='title'>Invalid username or password</h1>";
         echo "<a class='btn' text-align:center href='javascript:self.history.back()'> Go Back</a>";

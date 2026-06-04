@@ -43,10 +43,11 @@ $logged_in = $_SESSION['logged_in'];
 
 if($logged_in == false) {
     header("Location: login.php");
+    exit();
 }
 ?>
 <div class="logout-btn" >
-    <a id="open" class="btn" onclick= return confirm  >Logout</a>
+    <a id="open" class="btn">Logout</a>
 </div>
 <div class="modal-container" id="modal-container">
     <div class="modal">
