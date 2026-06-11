@@ -37,8 +37,30 @@ input[type=submit]:hover {
     border-radius: 5px;
     padding: 20px;
     margin-top: 1%;
+    width: 100%;
+    max-width: 100%;
+    padding: 20px;
 }
 
-h1 {
+/* h1 {
     margin-top: 5%;
+} */
+
+.feedback-title{
+    margin-left: 20px;
 }
+.feedback-form{
+    width: 100%;
+}
+
+.feedback-form input{
+    max-width: 100%;
+}
+@media (max-width : 650px){
+    /* .feedback-title{
+        text-align: center;
+    } */
+    .container{
+        align-content: center ;
+    }
+} 

@@ -46,6 +46,17 @@ if (empty($news)) {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="https://cdn.boxicons.com/3.0.8/fonts/basic/boxicons.min.css" rel="stylesheet">
     <script src="nav.js" defer></script>
+    <style>
+        i {
+            margin-left: 5px;
+        }
+        .bx bx-search{
+            padding: 20px;
+        }
+        .search-icon{
+            padding: 20px;
+        }
+    </style>
 </head>
 <body>
     <header class="header">
@@ -67,25 +78,27 @@ if (empty($news)) {
             </div>
         </div>
     </header>
+<div style="margin-left: 10px;">
 <h1 class="title"><u>All Articles</u></h1>
 <br>
 <p class="welcome-message"> This page contains Latest articles and updates to help your survival chances</p>
 <?php
 if($role === 'admin'){
-    echo '<a href="article_upload.php" class="btn">Create Article</a>'; 
+    echo '<a href="article_upload.php" style="margin-bottom: 10px;" class="btn">Create Article</a>'; 
 }
 ?>
-<br> <br>
 <br>
     <div class="search-button">
         <form method='POST'>
-            <input type="text" class="search-btn" placeholder="Search for a article or author" name="search">
+            <input type="text" class="search-btn" placeholder=" Search for an article" name="search">
             <button class="src-button" name="submit">
-                <span>Search</span>
-                <i class="bx bx-search"></i>
+            <span> Search</span>
             </button>
+                <!-- <i class="bx bx-search" id="search-icon"></i>    -->
         </form>
     </div>
+
+</div>
 
     <div class="posts-container">
         <?php

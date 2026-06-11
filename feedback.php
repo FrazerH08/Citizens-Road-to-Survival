@@ -33,9 +33,9 @@
             </div>
         </div>
     </header>
-<h1 class="title"><u>Feedback Form</u></h1>
+<h1 class="feedback-title"><u>Feedback Form</u></h1>
 <div class="container">
-  <form action="feedback_validate.php" method="post">
+  <form action="feedback_validate.php" class="feedback-form" method="post">
     <label class="labels" for="fname">First Name:</label>
     <input type="text" id="fname" name="firstname" placeholder="Your name..">
 
